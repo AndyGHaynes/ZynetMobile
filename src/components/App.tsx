@@ -10,50 +10,46 @@ import {
   Title,
 } from 'native-base';
 import React, { Component } from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
 
 import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/custom';
 import recipe from '../recipe';
-import RecipeCard from './recipe_card';
-
-const RootStack = createStackNavigator({
-  Recipe: {
-    screen: (props) => <RecipeCard recipe={recipe} />,
-  },
-}, {
-  initialRouteName: 'Recipe',
-  headerMode: 'none',
-});
+import {
+  configureStore,
+} from '../redux';
+import Navigator from './navigator';
 
 export default class App extends Component {
   render() {
     return (
-      <StyleProvider style={getTheme(theme)}>
-        <Container
-          theme={theme}
-          style={{
-            backgroundColor: theme.defaultBackgroundColor
-          }}
-        >
-          <Header>
-            <Left>
-              <Button transparent>
-                <Icon active name='arrow-dropleft' />
-              </Button>
-            </Left>
-            <Body>
-              <Title>Zynet</Title>
-            </Body>
-            <Right>
-              <Button transparent>
-                <Icon active name='menu' />
-              </Button>
-            </Right>
-          </Header>
-          <RootStack />
-        </Container>
-      </StyleProvider>
+      <Provider store={configureStore({ recipe })}>
+        <StyleProvider style={getTheme(theme)}>
+          <Container
+            theme={theme}
+            style={{
+              backgroundColor: theme.defaultBackgroundColor
+            }}
+          >
+            <Header>
+              <Left>
+                <Button transparent>
+                  <Icon active name='arrow-dropleft' />
+                </Button>
+              </Left>
+              <Body>
+                <Title>Zynet</Title>
+              </Body>
+              <Right>
+                <Button transparent>
+                  <Icon active name='menu' />
+                </Button>
+              </Right>
+            </Header>
+            <Navigator />
+          </Container>
+        </StyleProvider>
+      </Provider>
     );
   }
 }
