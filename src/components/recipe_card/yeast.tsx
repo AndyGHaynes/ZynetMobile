@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { View } from 'native-base';
 import React from 'react';
 
-import { Yeast as YeastType } from '../../types';
+import { Yeast as YeastType } from '../../types/ingredients';
 import {
   Column,
   Row

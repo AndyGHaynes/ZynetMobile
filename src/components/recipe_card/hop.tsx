@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 
-import { Hop as HopType } from '../../types';
+import { Hop as HopType } from '../../types/ingredients';
 import {
   Column,
   Quantity,

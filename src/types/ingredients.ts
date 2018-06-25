@@ -1,34 +1,11 @@
-import _ from 'lodash';
-
 import {
   HopAdditionType,
+  StarterAdditionType,
 } from '../constants/enums';
-
-export class Unit {
-  unit: string;
-  name: string;
-  shortName: string;
-  shorterName: string;
-}
-
-export class Measurement {
-  value: number;
-  unit: Unit;
-}
-
-export class Gravity {
-  constructor(
-    public value: number
-  ) { }
-  get points() {
-    return _.round((1 - this.value) * 100);
-  }
-  toString() {
-    return this.value === 1
-      ? '1.000'
-      : `${this.value}000`.substring(0, 5);
-  }
-}
+import {
+  Gravity,
+  Measurement,
+} from './core';
 
 export class HopAddition {
   type: HopAdditionType;
@@ -52,7 +29,7 @@ export class Hop extends Ingredient {
 }
 
 export class Fermentable extends Ingredient {
-  gravity: number;
+  gravity: Gravity;
   srm: number;
   weight: Measurement;
 }
@@ -67,7 +44,16 @@ export class Yeast extends Ingredient {
 
 export class StarterStep {
   time: Measurement;
-  gravity?: number;
-  growthRate?: number;
+  volume: Measurement;
+  gravity?: Gravity;
+  growthFactor?: number;
   stirPlate: boolean;
+  decanted: boolean;
+  additions: StarterAddition[];
+}
+
+export class StarterAddition {
+  name: string;
+  type: StarterAdditionType;
+  quantity: Measurement;
 }

@@ -12,6 +12,7 @@ import {
   Text,
 } from 'react-native';
 
+import { Recipe } from '../../types/recipe';
 import Fermentable from './fermentable';
 import Hop from './hop';
 import RecipeDetailCard from './recipe_detail_card';
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const RecipeCard = ({ recipe }) => (
+const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
   <Content style={styles.content}>
     <ScrollView>
     <Card>

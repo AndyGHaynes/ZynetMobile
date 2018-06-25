@@ -1,4 +1,5 @@
 import Units from './constants/units';
+import { MashMethod, SpargeMethod } from './constants/enums';
 
 export default {
   name: 'Golden Brett Ale',
@@ -69,7 +70,7 @@ export default {
       ibu: 89.4,
       time: { value: 60, unit: Units.Minute },
       type: 'boil',
-      weight: { value: 21.8, unit: 'g' },
+      weight: { value: 21.8, unit: Units.Gram },
     }, {
       ibu: 18.7,
       time: { value: 5, unit: Units.Minute },
@@ -94,7 +95,7 @@ export default {
       ibu: 113.4,
       time: { value: 60, unit: Units.Minute },
       type: 'boil',
-      weight: { value: 21.82, unit: 'g' },
+      weight: { value: 21.82, unit: Units.Gram },
     }, {
       ibu: 18.7,
       time: { value: 5, unit: Units.Minute },
@@ -108,10 +109,11 @@ export default {
   }
   ],
   mash: {
-    type: 'BIAB',
-    steps: [{
+    type: MashMethod.BIAB,
+    sparge: SpargeMethod.None,
+    rests: [{
       time: { value: 60, unit: Units.Minute },
-      targetTemp: { value: 152, unit: Units.Fahrenheit },
+      temperature: { value: 152, unit: Units.Fahrenheit },
     }],
   },
   yeast: [{
@@ -132,7 +134,7 @@ export default {
         type: 'fermentable',
         quantity: { value: 3, unit: Units.Ounce },
       } , {
-        substance: 'Wyeast Nutrient',
+        name: 'Wyeast Nutrient',
         type: 'nutrient',
         quantity: { value: 1, unit: Units.Gram },
       }],

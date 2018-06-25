@@ -5,7 +5,9 @@ import {
   Text,
 } from 'react-native';
 
-import { HopAddition as AdditionType } from '../../types';
+import {
+  HopAddition as AdditionType
+} from '../../types/ingredients';
 import {
   Quantity,
   Row,
