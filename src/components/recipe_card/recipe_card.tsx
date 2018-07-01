@@ -50,8 +50,11 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
       {_.map(recipe.fermentables, (fermentable, i) => (
         <Fermentable
           key={i}
-          {...fermentable}
-          fraction={fermentable.weight.value / _.sum(_.map(recipe.fermentables, 'weight.value'))}
+          fermentable={fermentable}
+          fraction={
+            fermentable.weight.value
+            / _.sum(_.map(recipe.fermentables, 'weight.value'))
+          }
         />
       ))}
     </RecipeDetailCard>

@@ -10,6 +10,7 @@ import {
   Colors,
   Row,
 } from '../core';
+import { Fermentable as FermentableType } from '../../types/ingredients';
 import IngredientDetail from './ingredient_detail';
 import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';
@@ -28,16 +29,28 @@ const styles = StyleSheet.create({
   },
 });
 
-const Fermentable = ({ name, mfg, gravity, weight, fraction, color }) => (
+interface FermentableProps {
+  fermentable: FermentableType;
+  fraction: number;
+}
+
+const Fermentable = ({ fermentable, fraction }: FermentableProps) => (
   <Row>
-    <View style={[styles.fermentableColorBar, { backgroundColor: color }]} />
-    <IngredientHeader {...{ name, mfg }}>
+    <View
+      style={[styles.fermentableColorBar, {
+        backgroundColor: fermentable.color
+      }]}
+    />
+    <IngredientHeader {...{
+      mfg: fermentable.mfg,
+      name: fermentable.name
+    }}>
       <Text style={styles.detail}>
-        {gravity.toString()}
+        {fermentable.gravity.toString()}
       </Text>
     </IngredientHeader>
     <IngredientDetail>
-      <Measurement {...weight} />
+      <Measurement {...fermentable.weight} />
       <Text style={styles.detail}>
         {_.round(100 * fraction, 1)}%
       </Text>
