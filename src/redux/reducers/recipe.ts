@@ -1,6 +1,6 @@
-import Units from '../../constants/units';
+import { Recipe } from '../../types/recipe';
 
-export default (state = {}, action) => {
+export default (state: Recipe = null, action): Recipe => {
   switch (action.type) {
     default:
       return state;
