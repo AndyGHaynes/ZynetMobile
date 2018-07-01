@@ -14,26 +14,27 @@ import Measurement from './measurement';
 
 const styles = StyleSheet.create({
   time: {
-    width: 60,
+    flex: 3,
   },
   timeText: {
     textAlign: 'right',
     paddingTop: 2,
-    width: 70,
   },
   type: {
     textAlign: 'center',
     paddingTop: 2,
-    width: 70,
+    flex: 3,
   },
   weight: {
-    width: 100,
+    flex: 5,
     flexDirection: 'row',
+  },
+  ibu: {
+    flex: 5,
   },
   ibuUnit: {
     fontSize: 14,
     marginLeft: 4,
-    width: 24,
     textAlign: 'left',
   },
   ibuValue: {
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
   timeUnit: {
     fontSize: 14,
     marginLeft: 4,
-    width: 60,
     textAlign: 'left',
   },
   timeValue: {
@@ -77,13 +77,15 @@ export default (addition: HopAddition) => (
         </Text>
       )}
     </View>
-    {addition.ibu && (
-      <Quantity
-        unit='IBU'
-        unitStyle={styles.ibuUnit}
-        value={addition.ibu}
-        valueStyle={styles.ibuValue}
-      />
-    )}
+    <View style={styles.ibu}>
+      {addition.ibu && (
+        <Quantity
+          unit='IBU'
+          unitStyle={styles.ibuUnit}
+          value={addition.ibu}
+          valueStyle={styles.ibuValue}
+        />
+      )}
+    </View>
   </Row>
 );

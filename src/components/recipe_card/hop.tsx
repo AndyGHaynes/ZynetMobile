@@ -31,30 +31,46 @@ const styles = StyleSheet.create({
     marginTop: 4,
     textAlign: 'left',
   },
+  additionSeparator: {
+    borderBottomColor: Colors.grayLight,
+    borderBottomWidth: 1,
+    marginBottom: 6,
+  },
+  detailCell: {
+    flex: 1,
+    paddingRight: 8,
+  },
+  headerCell: {
+    flex: 3,
+  },
+  hopSeparator: {
+    borderBottomColor: Colors.grayLight,
+    borderBottomWidth: 1,
+    marginBottom: 6,
+  },
+  ibu: {
+    left: 16,
+    position: 'relative',
+    top: -10,
+  },
   ibuUnit: {
     fontSize: 14,
     marginLeft: 4,
-    width: 24,
     textAlign: 'left',
   },
   ibuValue: {
     fontSize: 22,
     textAlign: 'right',
-    width: 72,
   },
 });
 
 export default (hop: Hop) => (
   <Column>
     <Row>
-      <IngredientHeader {..._.pick(hop, 'name', 'mfg')} />
-      <View>
-        <Quantity
-          unit='IBU'
-          unitStyle={styles.ibuUnit}
-          value={_.sum(_.map(hop.additions, 'ibu'))}
-          valueStyle={styles.ibuValue}
-        />
+      <View style={styles.headerCell}>
+        <IngredientHeader {..._.pick(hop, 'name', 'mfg')} />
+      </View>
+      <View style={styles.detailCell}>
         <Row>
           <Text style={styles.acid}>
             {hop.alpha}
@@ -69,10 +85,21 @@ export default (hop: Hop) => (
             β
           </Text>
         </Row>
+        <View style={styles.ibu}>
+          <Quantity
+            unit='IBU'
+            unitStyle={styles.ibuUnit}
+            value={_.sum(_.map(hop.additions, 'ibu'))}
+            valueStyle={styles.ibuValue}
+          />
+        </View>
       </View>
     </Row>
+    <View style={styles.hopSeparator} />
     {hop.additions.map((addition, i) => (
-      <HopAddition key={i} {...addition} />
+      <Row key={i}>
+        <HopAddition {...addition} />
+      </Row>
     ))}
   </Column>
 );

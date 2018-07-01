@@ -22,11 +22,17 @@ const styles = StyleSheet.create({
     marginTop: 4,
     textAlign: 'right',
   },
+  detailCell: {
+    flex: 1,
+  },
   fermentableColorBar: {
     width: 14,
     height: 48,
     marginVertical: 8,
   },
+  headerCell: {
+    flex: 3,
+  }
 });
 
 interface FermentableProps {
@@ -41,19 +47,20 @@ export default ({ fermentable, fraction }: FermentableProps) => (
         backgroundColor: fermentable.color
       }]}
     />
-    <IngredientHeader {...{
-      mfg: fermentable.mfg,
-      name: fermentable.name
-    }}>
-      <Text style={styles.detail}>
-        {fermentable.gravity.toString()}
-      </Text>
-    </IngredientHeader>
-    <IngredientDetail>
-      <Measurement {...fermentable.weight} />
-      <Text style={styles.detail}>
-        {_.round(100 * fraction, 1)}%
-      </Text>
-    </IngredientDetail>
+    <View style={styles.headerCell}>
+      <IngredientHeader {..._.pick(fermentable, 'mfg', 'name')}>
+        <Text style={styles.detail}>
+          {fermentable.gravity.toString()}
+        </Text>
+      </IngredientHeader>
+    </View>
+    <View style={styles.detailCell}>
+      <IngredientDetail>
+        <Measurement {...fermentable.weight} />
+        <Text style={styles.detail}>
+          {_.round(100 * fraction, 1)}%
+        </Text>
+      </IngredientDetail>
+    </View>
   </Row>
 );

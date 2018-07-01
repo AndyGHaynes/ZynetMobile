@@ -13,7 +13,6 @@ import IngredientDetail from './ingredient_detail';
 const styles = StyleSheet.create({
   name: {
     fontSize: 20,
-    width: 220,
   },
   mfg: {
     color: Colors.gray,

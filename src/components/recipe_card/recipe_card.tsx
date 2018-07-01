@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import { Recipe } from '../../types/recipe';
+import { Row } from '../core';
 import Fermentable from './fermentable';
 import Hop from './hop';
 import RecipeDetailCard from './recipe_detail_card';
@@ -48,30 +49,29 @@ export default ({ recipe }: { recipe: Recipe }) => (
     </Card>
     <RecipeDetailCard label='Fermentables'>
       {_.map(recipe.fermentables, (fermentable, i) => (
-        <Fermentable
-          key={i}
-          fermentable={fermentable}
-          fraction={
-            fermentable.weight.value
-            / _.sum(_.map(recipe.fermentables, 'weight.value'))
-          }
-        />
+        <Row key={i}>
+          <Fermentable
+            fermentable={fermentable}
+            fraction={
+              fermentable.weight.value
+              / _.sum(_.map(recipe.fermentables, 'weight.value'))
+            }
+          />
+        </Row>
       ))}
     </RecipeDetailCard>
     <RecipeDetailCard label='Hops'>
       {_.map(recipe.hops, (hop, i) => (
-        <Hop
-          key={i}
-          {...hop}
-        />
+        <Row key={i}>
+        <Hop {...hop} />
+        </Row>
       ))}
     </RecipeDetailCard>
     <RecipeDetailCard label='Yeast'>
       {_.map(recipe.yeast, (yeast, i) => (
-        <Yeast
-          key={i}
-          {...yeast}
-        />
+        <Row key={i}>
+          <Yeast {...yeast} />
+        </Row>
       ))}
     </RecipeDetailCard>
     </ScrollView>
