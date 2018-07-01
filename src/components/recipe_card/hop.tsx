@@ -8,6 +8,7 @@ import {
 
 import { Hop as HopType } from '../../types/ingredients';
 import {
+  Colors,
   Column,
   Quantity,
   Row,
@@ -17,14 +18,14 @@ import IngredientHeader from './ingredient_header';
 
 const styles = StyleSheet.create({
   acid: {
-    color: '#666',
+    color: Colors.grayDark,
     fontSize: 14,
     marginLeft: 12,
     marginTop: 2,
     textAlign: 'right',
   },
   acidSymbol: {
-    color: '#666',
+    color: Colors.grayDark,
     fontSize: 12,
     marginLeft: 4,
     marginTop: 4,

@@ -6,14 +6,17 @@ import {
   Text,
 } from 'react-native';
 
-import { Row } from '../core';
+import {
+  Colors,
+  Row,
+} from '../core';
 import IngredientDetail from './ingredient_detail';
 import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';
 
 const styles = StyleSheet.create({
   detail: {
-    color: '#666',
+    color: Colors.grayDark,
     fontSize: 16,
     marginTop: 4,
     textAlign: 'right',

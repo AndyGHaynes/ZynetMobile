@@ -9,9 +9,11 @@ import {
   Text,
 } from 'react-native';
 
+import { Colors } from '../core';
+
 const styles = StyleSheet.create({
   ingredientGroupLabel: {
-    color: '#999',
+    color: Colors.gray,
     fontVariant: ['small-caps'],
   },
 });

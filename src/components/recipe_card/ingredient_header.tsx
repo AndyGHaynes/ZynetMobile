@@ -4,7 +4,10 @@ import {
   Text,
 } from 'react-native';
 
-import { Row } from '../core';
+import {
+  Colors,
+  Row
+} from '../core';
 import IngredientDetail from './ingredient_detail';
 
 interface Header {
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
     width: 220,
   },
   mfg: {
-    color: '#999',
+    color: Colors.gray,
     fontVariant: ['small-caps'],
     marginTop: 4,
     width: 100,
