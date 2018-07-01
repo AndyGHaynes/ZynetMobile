@@ -1,6 +1,6 @@
 export class Style {
   code: string;
-  description: string;
+  description?: string;
   name: string;
   commercialExamples?: string[];
 }

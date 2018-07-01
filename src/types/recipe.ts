@@ -1,3 +1,5 @@
+import { Moment }  from 'moment';
+
 import {
   Fermentable,
   Hop,
@@ -9,7 +11,7 @@ import { Style } from './style';
 export class Recipe {
   name: string;
   style?: Style;
-  lastBrewed?: Date;
+  lastBrewed?: Moment;
   fermentables?: Fermentable[];
   hops?: Hop[];
   yeast?: Yeast[];

@@ -9,7 +9,7 @@ import {
 
 export class HopAddition {
   type: HopAdditionType;
-  time: Measurement;
+  time?: Measurement;
   weight: Measurement;
   ibu?: number;
   utilization?: number;
@@ -29,6 +29,7 @@ export class Hop extends Ingredient {
 }
 
 export class Fermentable extends Ingredient {
+  color: string;
   gravity: Gravity;
   srm: number;
   weight: Measurement;
@@ -40,6 +41,7 @@ export class Yeast extends Ingredient {
   pitchTemp?: Measurement;
   quantity: number;
   starterSteps?: StarterStep[];
+  targetCellCount: number;
 }
 
 export class StarterStep {

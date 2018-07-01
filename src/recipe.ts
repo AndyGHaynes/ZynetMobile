@@ -1,27 +1,40 @@
+import moment from 'moment';
+
 import Units from './constants/units';
-import { MashMethod, SpargeMethod } from './constants/enums';
+import {
+  HopAdditionType,
+  MashMethod,
+  SpargeMethod,
+  StarterAdditionType,
+} from './constants/enums';
+import { Gravity } from './types/core';
+
+const brewDate = moment().subtract(15, 'days');
 
 export default {
   name: 'Golden Brett Ale',
   style: { name: 'Brett Ale', code: '28A' },
-  lastBrewed: 'two weeks ago',
+  lastBrewed: brewDate,
   fermentables: [{
     name: '2-Row Pale Malt',
-    gravity: 1.037,
+    gravity: new Gravity(1.037),
     mfg: 'Briess',
     weight: { value: 8, unit: Units.Pound },
+    srm: 2.4,
     color: '#EA8F00',
   }, {
     name: 'White Wheat Malt',
-    gravity: 1.035,
+    gravity: new Gravity(1.035),
     mfg: 'Simpson',
     weight: { value: 4, unit: Units.Pound },
+    srm: 1.9,
     color: '#FFCA5A',
   }, {
     name: 'Honey Malt',
-    gravity: 1.034,
+    gravity: new Gravity(1.034),
     mfg: 'Gambrinus',
     weight: { value: 0.58, unit: Units.Pound },
+    srm: 6.8,
     color: '#F8A600',
   }],
   hops: [{
@@ -33,30 +46,30 @@ export default {
     additions: [{
       ibu: 24.3,
       time: { value: 60, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 1.3, unit: Units.Ounce },
     }, {
       ibu: 18.7,
       time: { value: 15, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 1.75, unit: Units.Ounce },
     }, {
       ibu: 24.3,
       time: { value: 10, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 1.25, unit: Units.Ounce },
     }, {
       ibu: 18.7,
       time: { value: 5, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 1.75, unit: Units.Ounce },
     }, {
       ibu: 3.1,
-      type: 'whirlpool',
+      type: HopAdditionType.Whirlpool,
       weight: { value: 1, unit: Units.Ounce },
     }, {
       time: { value: 3, unit: Units.Day },
-      type: 'dry hop',
+      type: HopAdditionType.DryHop,
       weight: { value: 1, unit: Units.Ounce },
     }]
   }
@@ -69,20 +82,20 @@ export default {
     additions: [{
       ibu: 89.4,
       time: { value: 60, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 21.8, unit: Units.Gram },
     }, {
       ibu: 18.7,
       time: { value: 5, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 1.75, unit: Units.Ounce },
     }, {
       ibu: 3.1,
-      type: 'whirlpool',
+      type: HopAdditionType.Whirlpool,
       weight: { value: 1, unit: Units.Ounce },
     }, {
       time: { value: 3, unit: Units.Day },
-      type: 'dry hop',
+      type: HopAdditionType.DryHop,
       weight: { value: 1, unit: Units.Ounce },
     }]
   }, {
@@ -94,26 +107,28 @@ export default {
     additions: [{
       ibu: 113.4,
       time: { value: 60, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 21.82, unit: Units.Gram },
     }, {
       ibu: 18.7,
       time: { value: 5, unit: Units.Minute },
-      type: 'boil',
+      type: HopAdditionType.Boil,
       weight: { value: 1.75, unit: Units.Ounce },
     }, {
       time: { value: 3, unit: Units.Day },
-      type: 'dry hop',
+      type: HopAdditionType.DryHop,
       weight: { value: 1, unit: Units.Ounce },
     }]
   }
   ],
   mash: {
-    type: MashMethod.BIAB,
+    efficiency: 0.75,
+    method: MashMethod.BIAB,
     sparge: SpargeMethod.None,
     rests: [{
-      time: { value: 60, unit: Units.Minute },
+      recirculated: true,
       temperature: { value: 152, unit: Units.Fahrenheit },
+      time: { value: 60, unit: Units.Minute },
     }],
   },
   yeast: [{
@@ -121,21 +136,22 @@ export default {
     code: '1056',
     mfg: 'Wyeast',
     pitchTemp: { value: 68, unit: Units.Fahrenheit },
+    quantity: 1,
     targetCellCount: 117.4,
     starterSteps: [{
       volume: { value: 1, unit: Units.Liter },
       time: { value: 12, unit: Units.Hour },
-      gravity: 1.035,
+      gravity: new Gravity(1.035),
       stirPlate: false,
       decanted: true,
       growthFactor: 1.3,
       additions: [{
-        substance: 'Light DME',
-        type: 'fermentable',
+        name: 'Light DME',
+        type: StarterAdditionType.Fermentable,
         quantity: { value: 3, unit: Units.Ounce },
       } , {
         name: 'Wyeast Nutrient',
-        type: 'nutrient',
+        type: StarterAdditionType.Nutrient,
         quantity: { value: 1, unit: Units.Gram },
       }],
     }]

@@ -33,7 +33,7 @@ const Fermentable = ({ name, mfg, gravity, weight, fraction, color }) => (
     <View style={[styles.fermentableColorBar, { backgroundColor: color }]} />
     <IngredientHeader {...{ name, mfg }}>
       <Text style={styles.detail}>
-        {gravity}
+        {gravity.toString()}
       </Text>
     </IngredientHeader>
     <IngredientDetail>

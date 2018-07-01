@@ -41,7 +41,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
           {recipe.style.name} {recipe.style.code}
         </Text>
         <Text>
-          Last brewed {recipe.lastBrewed}
+          Last brewed {recipe.lastBrewed.fromNow()}
         </Text>
         </Body>
       </CardItem>

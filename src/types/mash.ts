@@ -17,7 +17,7 @@ export class Loss {
 export class Rest {
   time: Measurement;
   temperature: Measurement;
-  recirculated: boolean;
+  recirculated?: boolean;
 }
 
 export class MashSchedule {

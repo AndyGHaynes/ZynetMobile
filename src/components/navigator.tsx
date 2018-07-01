@@ -1,19 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 
+import { AppRoute } from '../constants/routes';
 import {
   RecipeCardContainer,
 } from '../redux/containers';
 
-enum Route {
-  Recipe,
-}
-
 export default createStackNavigator({
-  [Route.Recipe]: {
-    screen: (props) => <RecipeCardContainer />,
+  [AppRoute.RecipeCard]: {
+    screen: RecipeCardContainer,
   },
 }, {
-  initialRouteName: Route.Recipe,
+  initialRouteName: AppRoute.RecipeCard,
   headerMode: 'none',
 });
