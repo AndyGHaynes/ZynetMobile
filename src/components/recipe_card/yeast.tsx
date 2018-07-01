@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { View } from 'native-base';
 import React from 'react';
 
-import { Yeast as YeastType } from '../../types/ingredients';
+import { Yeast } from '../../types/ingredients';
 import {
   Column,
   Row
@@ -10,7 +10,7 @@ import {
 import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';
 
-const Yeast = (yeast: YeastType) => (
+export default (yeast: Yeast) => (
   <Column>
     <Row>
       <IngredientHeader name={yeast.name} mfg={`${yeast.mfg} ${yeast.code}`} />
@@ -23,5 +23,3 @@ const Yeast = (yeast: YeastType) => (
     ))}
   </Column>
 );
-
-export default Yeast;

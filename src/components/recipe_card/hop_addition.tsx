@@ -5,9 +5,7 @@ import {
   Text,
 } from 'react-native';
 
-import {
-  HopAddition as AdditionType
-} from '../../types/ingredients';
+import { HopAddition } from '../../types/ingredients';
 import {
   Quantity,
   Row,
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HopAddition = (addition: AdditionType) => (
+export default (addition: HopAddition) => (
   <Row>
     <View style={styles.weight}>
       <Measurement {...addition.weight} />
@@ -89,5 +87,3 @@ const HopAddition = (addition: AdditionType) => (
     )}
   </Row>
 );
-
-export default HopAddition;

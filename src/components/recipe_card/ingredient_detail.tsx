@@ -9,10 +9,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const IngredientDetail = ({ children }) => (
+export default ({ children }) => (
   <View style={styles.detail}>
     {children}
   </View>
 );
-
-export default IngredientDetail;

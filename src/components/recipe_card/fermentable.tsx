@@ -34,7 +34,7 @@ interface FermentableProps {
   fraction: number;
 }
 
-const Fermentable = ({ fermentable, fraction }: FermentableProps) => (
+export default ({ fermentable, fraction }: FermentableProps) => (
   <Row>
     <View
       style={[styles.fermentableColorBar, {
@@ -57,5 +57,3 @@ const Fermentable = ({ fermentable, fraction }: FermentableProps) => (
     </IngredientDetail>
   </Row>
 );
-
-export default Fermentable;

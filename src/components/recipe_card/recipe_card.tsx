@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
+export default ({ recipe }: { recipe: Recipe }) => (
   <Content style={styles.content}>
     <ScrollView>
     <Card>
@@ -77,5 +77,3 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => (
     </ScrollView>
   </Content>
 );
-
-export default RecipeCard;

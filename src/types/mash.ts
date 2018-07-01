@@ -6,7 +6,7 @@ import {
 import {
   Measurement,
   Ratio,
-} from './core';
+} from './zymath';
 
 export class Loss {
   type: LossType;

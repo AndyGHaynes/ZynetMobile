@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const RecipeDetailCard = (props) => (
+export default (props) => (
   <Card>
     <CardItem>
       <Body>
@@ -30,5 +30,3 @@ const RecipeDetailCard = (props) => (
     </CardItem>
   </Card>
 );
-
-export default RecipeDetailCard;

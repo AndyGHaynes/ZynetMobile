@@ -5,7 +5,7 @@ import {
 import {
   Gravity,
   Measurement,
-} from './core';
+} from './zymath';
 
 export class HopAddition {
   type: HopAdditionType;

@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 
-import { Hop as HopType } from '../../types/ingredients';
+import { Hop } from '../../types/ingredients';
 import {
   Colors,
   Column,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Hop = (hop: HopType) => (
+export default (hop: Hop) => (
   <Column>
     <Row>
       <IngredientHeader {..._.pick(hop, 'name', 'mfg')} />
@@ -76,5 +76,3 @@ const Hop = (hop: HopType) => (
     ))}
   </Column>
 );
-
-export default Hop;

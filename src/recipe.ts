@@ -7,7 +7,7 @@ import {
   SpargeMethod,
   StarterAdditionType,
 } from './constants/enums';
-import { Gravity } from './types/core';
+import { Gravity } from './types/zymath';
 
 const brewDate = moment().subtract(15, 'days');
 

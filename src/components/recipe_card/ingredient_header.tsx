@@ -10,12 +10,6 @@ import {
 } from '../core';
 import IngredientDetail from './ingredient_detail';
 
-interface Header {
-  name: string;
-  mfg: string;
-  children?: any;
-}
-
 const styles = StyleSheet.create({
   name: {
     fontSize: 20,
@@ -29,18 +23,22 @@ const styles = StyleSheet.create({
   }
 });
 
-const IngredientHeader = (header: Header) => (
+interface HeaderProps {
+  name: string;
+  mfg: string;
+  children?: any;
+}
+
+export default ({ name, mfg, children }: HeaderProps) => (
   <IngredientDetail>
     <Text style={styles.name}>
-      {header.name}
+      {name}
     </Text>
     <Row>
       <Text style={styles.mfg}>
-        {header.mfg}
+        {mfg}
       </Text>
-      {header.children}
+      {children}
     </Row>
   </IngredientDetail>
 );
-
-export default IngredientHeader;
