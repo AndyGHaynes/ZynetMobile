@@ -22,14 +22,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 12,
     marginTop: 2,
-    textAlign: 'right',
   },
   acidSymbol: {
     color: Colors.grayDark,
     fontSize: 12,
     marginLeft: 4,
     marginTop: 4,
-    textAlign: 'left',
   },
   additionSeparator: {
     borderBottomColor: Colors.grayLight,

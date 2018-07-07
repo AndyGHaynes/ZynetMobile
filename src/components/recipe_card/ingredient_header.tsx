@@ -18,14 +18,14 @@ const styles = StyleSheet.create({
     color: Colors.gray,
     fontVariant: ['small-caps'],
     marginTop: 4,
-    width: 100,
+    flex: 1,
   }
 });
 
 interface HeaderProps {
   name: string;
   mfg: string;
-  children?: any;
+  children?: JSX.Element;
 }
 
 export default ({ name, mfg, children }: HeaderProps) => (
