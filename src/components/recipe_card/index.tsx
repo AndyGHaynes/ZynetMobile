@@ -5,7 +5,7 @@ import {
   CardItem,
   Content,
 } from 'native-base';
-import React from 'react';
+import React, { Component } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -13,7 +13,13 @@ import {
 } from 'react-native';
 
 import { Recipe } from '../../types/recipe';
-import { Row } from '../core';
+import { TouchableRow } from '../core';
+import {
+  FermentableDetailCard,
+  HopDetailCard,
+  YeastDetailCard,
+} from '../ingredient_cards';
+import { IngredientModal } from '../modal';
 import Fermentable from './fermentable';
 import Hop from './hop';
 import RecipeDetailCard from './recipe_detail_card';
@@ -29,51 +35,135 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ({ recipe }: { recipe: Recipe }) => (
-  <Content style={styles.content}>
-    <ScrollView>
-    <Card>
-      <CardItem>
-        <Body>
-        <Text style={styles.name}>
-          {recipe.name}
-        </Text>
-        <Text>
-          {recipe.style.name} {recipe.style.code}
-        </Text>
-        <Text>
-          Last brewed {recipe.lastBrewed.fromNow()}
-        </Text>
-        </Body>
-      </CardItem>
-    </Card>
-    <RecipeDetailCard label='Fermentables'>
-      {_.map(recipe.fermentables, (fermentable, i) => (
-        <Row key={i}>
-          <Fermentable
-            fermentable={fermentable}
-            fraction={
-              fermentable.weight.value
-              / _.sum(_.map(recipe.fermentables, 'weight.value'))
-            }
-          />
-        </Row>
-      ))}
-    </RecipeDetailCard>
-    <RecipeDetailCard label='Hops'>
-      {_.map(recipe.hops, (hop, i) => (
-        <Row key={i}>
-        <Hop {...hop} />
-        </Row>
-      ))}
-    </RecipeDetailCard>
-    <RecipeDetailCard label='Yeast'>
-      {_.map(recipe.yeast, (yeast, i) => (
-        <Row key={i}>
-          <Yeast {...yeast} />
-        </Row>
-      ))}
-    </RecipeDetailCard>
-    </ScrollView>
-  </Content>
-);
+interface RecipeProps {
+  recipe: Recipe;
+}
+
+interface RecipeState {
+  modalComponent?: JSX.Element;
+  modalOpen: boolean;
+  modalTitle: string,
+}
+
+export default class RecipeCard extends Component<RecipeProps, RecipeState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalComponent: null,
+      modalOpen: false,
+      modalTitle: null,
+    };
+  }
+
+  setModalComponent = (title: string, component: JSX.Element): void => {
+    this.setState({
+      modalComponent: component,
+      modalOpen: true,
+      modalTitle: title,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      modalComponent: null,
+      modalOpen: false,
+      modalTitle: null,
+    });
+  };
+
+  render() {
+    const {
+      fermentables,
+      hops,
+      lastBrewed,
+      mash,
+      name,
+      style,
+      yeast: yeasts
+    } = this.props.recipe;
+    const {
+      modalComponent,
+      modalOpen,
+      modalTitle,
+    } = this.state;
+    return (
+      <Content style={styles.content}>
+        <ScrollView>
+          <Card>
+            <CardItem>
+              <Body>
+              <Text style={styles.name}>
+                {name}
+              </Text>
+              <Text>
+                {style.name} {style.code}
+              </Text>
+              <Text>
+                Last brewed {lastBrewed.fromNow()}
+              </Text>
+              </Body>
+            </CardItem>
+          </Card>
+          <RecipeDetailCard label='Fermentables'>
+            {_.map(fermentables, (fermentable, i) => (
+              <TouchableRow
+                key={i}
+                onPress={() =>
+                  this.setModalComponent(
+                    fermentable.name,
+                    <FermentableDetailCard {...fermentable} />
+                  )
+                }
+              >
+                <Fermentable
+                  fermentable={fermentable}
+                  fraction={
+                    fermentable.weight.value
+                    / _.sum(_.map(fermentables, 'weight.value'))
+                  }
+                />
+              </TouchableRow>
+            ))}
+          </RecipeDetailCard>
+          <RecipeDetailCard label='Hops'>
+            {_.map(hops, (hop, i) => (
+              <TouchableRow
+                key={i}
+                onPress={() =>
+                  this.setModalComponent(
+                    hop.name,
+                    <HopDetailCard {...hop} />
+                  )
+                }
+              >
+                <Hop {...hop} />
+              </TouchableRow>
+            ))}
+          </RecipeDetailCard>
+          <RecipeDetailCard label='Yeast'>
+            {_.map(yeasts, (yeast, i) => (
+              <TouchableRow
+                key={i}
+                onPress={() =>
+                  this.setModalComponent(
+                    yeast.name,
+                    <YeastDetailCard {...yeast} />
+                  )
+                }
+              >
+                <Yeast {...yeast} />
+              </TouchableRow>
+            ))}
+          </RecipeDetailCard>
+        </ScrollView>
+        <IngredientModal
+          visible={modalOpen}
+          close={this.closeModal}
+          title={modalTitle}
+        >
+          {modalComponent}
+        </IngredientModal>
+      </Content>
+    );
+  }
+}
