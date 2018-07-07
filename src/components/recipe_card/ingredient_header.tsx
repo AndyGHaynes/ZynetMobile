@@ -1,12 +1,14 @@
+import {
+  Row,
+  Text,
+} from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
-  Text,
 } from 'react-native';
 
 import {
   Colors,
-  Row
 } from '../core';
 import IngredientDetail from './ingredient_detail';
 

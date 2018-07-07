@@ -1,13 +1,15 @@
 import _ from 'lodash';
-import { View } from 'native-base';
+import {
+  Col,
+  Row,
+  View,
+} from 'native-base';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {
+  StyleSheet,
+} from 'react-native';
 
 import { Yeast } from '../../types/ingredients';
-import {
-  Column,
-  Row
-} from '../core';
 import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';
 
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
 });
 
 export default (yeast: Yeast) => (
-  <Column>
+  <Col>
     <Row>
       <View style={styles.headerCell}>
         <IngredientHeader
@@ -36,5 +38,5 @@ export default (yeast: Yeast) => (
     {_.map(yeast.starterSteps, (step, i) => (
       <View key={i} {...step} />
     ))}
-    </Column>
+    </Col>
 );

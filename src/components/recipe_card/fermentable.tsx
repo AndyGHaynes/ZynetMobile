@@ -1,5 +1,8 @@
 import _ from 'lodash';
-import { View } from 'native-base';
+import {
+  Row,
+  View,
+} from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
@@ -8,7 +11,6 @@ import {
 
 import {
   Colors,
-  Row,
 } from '../core';
 import { Fermentable as FermentableType } from '../../types/ingredients';
 import IngredientDetail from './ingredient_detail';

@@ -1,17 +1,19 @@
 import _ from 'lodash';
-import { View } from 'native-base';
+import {
+  Col,
+  Row,
+  Text,
+  View,
+} from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
-  Text,
 } from 'react-native';
 
 import { Hop } from '../../types/ingredients';
 import {
   Colors,
-  Column,
   Quantity,
-  Row,
 } from '../core';
 import HopAddition from './hop_addition';
 import IngredientHeader from './ingredient_header';
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
 });
 
 export default (hop: Hop) => (
-  <Column>
+  <Col>
     <Row>
       <View style={styles.headerCell}>
         <IngredientHeader {..._.pick(hop, 'name', 'mfg')} />
@@ -99,5 +101,5 @@ export default (hop: Hop) => (
         <HopAddition {...addition} />
       </Row>
     ))}
-  </Column>
+  </Col>
 );
