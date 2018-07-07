@@ -15,6 +15,9 @@ import {
 import Measurement from './measurement';
 
 const styles = StyleSheet.create({
+  addition: {
+    marginBottom: 2,
+  },
   time: {
     flex: 3,
   },
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
 });
 
 export default (addition: HopAddition) => (
-  <Row>
+  <Row style={styles.addition}>
     <View style={styles.weight}>
       <Measurement {...addition.weight} />
     </View>

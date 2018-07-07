@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   acidSymbol: {
     color: Colors.grayDark,
     fontSize: 12,
+    fontWeight: '700',
     marginLeft: 4,
     marginTop: 4,
   },
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
   headerCell: {
-    flex: 3,
+    flex: 6,
   },
   hopSeparator: {
     borderBottomColor: Colors.grayLight,
@@ -49,9 +50,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   ibu: {
-    left: 16,
-    position: 'relative',
-    top: -10,
+    marginTop: 10,
   },
   ibuUnit: {
     fontSize: 14,
@@ -62,29 +61,32 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'right',
   },
+  lastAddition: {
+    marginBottom: 8,
+  },
 });
+
+const renderAcid = (acid: number, symbol: string): JSX.Element => (
+  <Row>
+    <Text style={styles.acid}>
+      {_.round(acid, 1)}%
+    </Text>
+    <Text style={styles.acidSymbol}>
+      {symbol}
+    </Text>
+  </Row>
+);
 
 export default (hop: Hop) => (
   <Col>
     <Row>
       <View style={styles.headerCell}>
-        <IngredientHeader {..._.pick(hop, 'name', 'mfg')} />
+        <IngredientHeader {..._.pick(hop, 'name', 'mfg')}>
+          {renderAcid(hop.alpha, 'α')}
+          {renderAcid(hop.beta, 'β')}
+        </IngredientHeader>
       </View>
       <View style={styles.detailCell}>
-        <Row>
-          <Text style={styles.acid}>
-            {hop.alpha}
-          </Text>
-          <Text style={styles.acidSymbol}>
-            α
-          </Text>
-          <Text style={styles.acid}>
-            {hop.beta}
-          </Text>
-          <Text style={styles.acidSymbol}>
-            β
-          </Text>
-        </Row>
         <View style={styles.ibu}>
           <Quantity
             unit='IBU'
@@ -97,7 +99,7 @@ export default (hop: Hop) => (
     </Row>
     <View style={styles.hopSeparator} />
     {hop.additions.map((addition, i) => (
-      <Row key={i}>
+      <Row key={i} style={i === hop.additions.length - 1 ? styles.lastAddition : {}}>
         <HopAddition {...addition} />
       </Row>
     ))}
