@@ -22,7 +22,7 @@ import Navigator from './navigator';
 export default class App extends Component {
   render() {
     return (
-      <Provider store={configureStore({ recipe: randomizeRecipe() })}>
+      <Provider store={configureStore()}>
         <StyleProvider style={getTheme(theme)}>
           <Container
             theme={theme}
