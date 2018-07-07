@@ -8,7 +8,9 @@ export default (hop: Hop) => (
     category={hop.categories.replace(/,/g, ' | ')}
     excludedProperties={[
       'additions',
+      'alpha',
       'aroma',
+      'beta',
       'categories',
       'color',
       'description',
@@ -16,6 +18,8 @@ export default (hop: Hop) => (
     ]}
     ingredient={hop}
     propertyMask={{
+      'alphaRange': 'alpha',
+      'betaRange': 'beta',
       'coHumulone': 'co-humulone',
       'totalOil': 'total oil',
     }}

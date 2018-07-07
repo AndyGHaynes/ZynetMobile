@@ -83,10 +83,23 @@ function getFermentables(): Fermentable[] {
   });
 }
 
+function randomWithinRange(rawRange: string): number {
+  const range = _.map(
+    (rawRange || '').split('-'),
+    _.parseInt
+  );
+  if (range.length) {
+    return _.random(...range, true);
+  }
+  return null;
+}
+
 function getHopAdditions(): Hop[] {
   const randomHops = randomizeIngredientType<Hop>(IngredientType.Hop);
   return _.map(randomHops, (hop) => ({
     ...hop,
+    alpha: randomWithinRange(hop.alphaRange),
+    beta: randomWithinRange(hop.betaRange),
     additions: _.map(_.range(_.random(1, 3)), () => ({
       time: { value: _.random(0, 60), unit: Units.Minute },
       type: HopAdditionType.Boil,
