@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 
 import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/custom';
-import { randomizeRecipe } from '../constants/ingredients';
 import {
   configureStore,
 } from '../redux';
