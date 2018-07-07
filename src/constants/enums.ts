@@ -5,6 +5,12 @@ export enum HopAdditionType {
   Whirlpool = 'whirlpool',
 }
 
+export enum IngredientType {
+  Malt = 'malt',
+  Hop = 'hop',
+  Yeast = 'yeast',
+}
+
 export enum LossType {
   Boil = 'boil',
   DeadSpace = 'dead space',

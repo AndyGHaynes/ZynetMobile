@@ -15,10 +15,21 @@ export class HopAddition {
   utilization?: number;
 }
 
-abstract class Ingredient {
+export class IngredientProperty {
+  displayOrder?: number;
   name: string;
+  value: string;
+}
+
+export abstract class Ingredient {
+  category?: string;
+  categories?: string;
+  characteristics?: string;
+  description?: string;
   mfg?: string;
-  sourceUrl?: string;
+  name: string;
+  properties?: IngredientProperty[];
+  url?: string;
 }
 
 export class Hop extends Ingredient {
@@ -26,12 +37,14 @@ export class Hop extends Ingredient {
   alpha?: number;
   beta?: number;
   flavors?: string[];
+  aroma?: string;
 }
 
 export class Fermentable extends Ingredient {
   color: string;
-  gravity: Gravity;
-  srm: number;
+  gravity?: Gravity;
+  lovibond?: number;
+  srm?: number;
   weight: Measurement;
 }
 
@@ -42,6 +55,7 @@ export class Yeast extends Ingredient {
   quantity: number;
   starterSteps?: StarterStep[];
   targetCellCount: number;
+  styles?: string;
 }
 
 export class StarterStep {

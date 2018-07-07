@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 
 import getTheme from '../../native-base-theme/components';
 import theme from '../../native-base-theme/variables/custom';
-import recipe from '../recipe';
+import { randomizeRecipe } from '../constants/ingredients';
 import {
   configureStore,
 } from '../redux';
@@ -23,7 +23,7 @@ import Navigator from './navigator';
 export default class App extends Component {
   render() {
     return (
-      <Provider store={configureStore({ recipe })}>
+      <Provider store={configureStore({ recipe: randomizeRecipe() })}>
         <StyleProvider style={getTheme(theme)}>
           <Container
             theme={theme}
