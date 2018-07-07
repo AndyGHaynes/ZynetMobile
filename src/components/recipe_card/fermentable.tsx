@@ -50,7 +50,7 @@ export default ({ fermentable, fraction }: FermentableProps) => (
     <View style={styles.headerCell}>
       <IngredientHeader {..._.pick(fermentable, 'mfg', 'name')}>
         <Text style={styles.detail}>
-          {fermentable.gravity.toString()}
+          {fermentable.gravity && fermentable.gravity.toString()}
         </Text>
       </IngredientHeader>
     </View>
