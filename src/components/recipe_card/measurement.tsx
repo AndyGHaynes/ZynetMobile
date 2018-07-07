@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
 
 export default ({ unit, value }: Measurement) => (
   <Quantity
-    {...{ unit: unit.shortName, value }}
+    {...{ unit: unit.shortName, value: _.round(value, 2) }}
     unitStyle={styles.unit}
     valueStyle={styles.value}
   />

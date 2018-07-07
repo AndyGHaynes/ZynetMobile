@@ -87,7 +87,7 @@ export default (hop: Hop) => (
           <Quantity
             unit='IBU'
             unitStyle={styles.ibuUnit}
-            value={_.sum(_.map(hop.additions, 'ibu'))}
+            value={_.round(_.sum(_.map(hop.additions, 'ibu')), 2)}
             valueStyle={styles.ibuValue}
           />
         </View>
