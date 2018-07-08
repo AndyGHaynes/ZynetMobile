@@ -6,10 +6,10 @@ import rootReducer from './reducers';
 import { AppState } from './types';
 
 export default function configureStore(preloadedState?: AppState) {
-  const middlewareEnhancer = applyMiddleware(...[
+  const middlewareEnhancer = applyMiddleware(
     loggerMiddleware,
     thunkMiddleware,
-  ]);
+  );
 
   const composedEnhancers = compose(
     middlewareEnhancer,

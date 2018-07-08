@@ -49,7 +49,7 @@ function parseRanges(ingredient: Ingredient) {
   };
 }
 
-function filterIngredients<T>(type: IngredientType) {
+function filterIngredients(type: IngredientType) {
   const index = {
     [IngredientType.Malt]: 1,
     [IngredientType.Hop]: 2,

@@ -76,7 +76,6 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
       fermentables,
       hops,
       lastBrewed,
-      mash,
       name,
       style,
       yeast: yeasts
