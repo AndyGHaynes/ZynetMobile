@@ -18,6 +18,14 @@ import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';
 
 const styles = StyleSheet.create({
+  colorBar: {
+    width: 14,
+    height: 48,
+  },
+  colorBarContainer: {
+    justifyContent: 'center',
+    paddingVertical: 8,
+  },
   detail: {
     color: Colors.grayDark,
     fontSize: 16,
@@ -27,14 +35,9 @@ const styles = StyleSheet.create({
   detailCell: {
     flex: 1,
   },
-  fermentableColorBar: {
-    width: 14,
-    height: 48,
-    marginVertical: 8,
-  },
   headerCell: {
     flex: 3,
-  }
+  },
 });
 
 interface FermentableProps {
@@ -44,11 +47,13 @@ interface FermentableProps {
 
 export default ({ fermentable, fraction }: FermentableProps) => (
   <Row>
-    <View
-      style={[styles.fermentableColorBar, {
-        backgroundColor: fermentable.color
-      }]}
-    />
+    <View style={styles.colorBarContainer}>
+      <View
+        style={[styles.colorBar, {
+          backgroundColor: fermentable.color,
+        }]}
+      />
+    </View>
     <View style={styles.headerCell}>
       <IngredientHeader {..._.pick(fermentable, 'mfg', 'name')}>
         <Text style={styles.detail}>
