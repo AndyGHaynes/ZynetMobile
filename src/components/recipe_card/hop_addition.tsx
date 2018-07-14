@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   Row,
-  Text,
   View,
 } from 'native-base';
 import {
   StyleSheet,
+  Text,
 } from 'react-native';
 
 import { HopAddition } from '../../types/ingredients';

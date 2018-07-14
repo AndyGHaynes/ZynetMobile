@@ -1,8 +1,10 @@
 import {
   Row,
-  Text,
 } from 'native-base';
 import React from 'react';
+import {
+  Text,
+} from 'react-native';
 
 export default ({ unit, unitStyle, value, valueStyle }) => (
   <Row>

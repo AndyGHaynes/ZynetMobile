@@ -2,12 +2,12 @@ import _ from 'lodash';
 import {
   Col,
   Row,
-  Text,
   View,
 } from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
+  Text,
 } from 'react-native';
 
 import { Hop } from '../../types/ingredients';
