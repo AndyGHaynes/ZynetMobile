@@ -1,12 +1,14 @@
 import { Recipe } from '../../types/recipe';
-import { randomizeRecipe } from '../../constants/ingredients';
+import ActionTypes from '../actions/recipe/types';
 
 export default (state: Recipe = null, action): Recipe => {
   switch (action.type) {
-    default:
+    case ActionTypes.RANDOMIZE_RECIPE:
       return {
         ...state,
-        ...randomizeRecipe(),
+        ...action.recipe,
       };
+    default:
+      return state;
   }
 }

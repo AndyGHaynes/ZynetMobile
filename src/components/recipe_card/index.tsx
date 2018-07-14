@@ -32,10 +32,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     textAlign: 'center',
-  }
+  },
 });
 
 interface RecipeProps {
+  randomizeRecipe: () => void;
   recipe: Recipe;
 }
 
@@ -72,13 +73,22 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
   };
 
   render() {
+    if (!this.props.recipe) {
+      return (
+        <Content>
+          <TouchableRow onPress={this.props.randomizeRecipe}>
+            <Text>no recipe loaded</Text>
+          </TouchableRow>
+        </Content>
+      );
+    }
     const {
       fermentables,
       hops,
       lastBrewed,
       name,
       style,
-      yeast: yeasts
+      yeast: yeasts,
     } = this.props.recipe;
     const {
       modalComponent,
@@ -88,21 +98,23 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
     return (
       <Content style={styles.content}>
         <ScrollView>
-          <Card>
-            <CardItem>
-              <Body>
-              <Text style={styles.name}>
-                {name}
-              </Text>
-              <Text>
-                {style.name} {style.code}
-              </Text>
-              <Text>
-                Last brewed {lastBrewed.fromNow()}
-              </Text>
-              </Body>
-            </CardItem>
-          </Card>
+          <TouchableRow onPress={this.props.randomizeRecipe}>
+            <Card>
+              <CardItem>
+                <Body>
+                <Text style={styles.name}>
+                  {name}
+                </Text>
+                <Text>
+                  {style.name} {style.code}
+                </Text>
+                <Text>
+                  Last brewed {lastBrewed.fromNow()}
+                </Text>
+                </Body>
+              </CardItem>
+            </Card>
+          </TouchableRow>
           <RecipeDetailCard label='Fermentables'>
             {_.map(fermentables, (fermentable, i) => (
               <TouchableRow

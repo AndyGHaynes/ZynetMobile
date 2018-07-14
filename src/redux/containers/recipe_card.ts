@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import RecipeCard from '../../components/recipe_card';
+import actions from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -8,4 +9,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(RecipeCard);
+const mapDispatchToProps = (dispatch) => ({
+  randomizeRecipe: () => dispatch(actions.recipe.loadRandomRecipe()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RecipeCard);
