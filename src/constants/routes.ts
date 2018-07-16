@@ -1,12 +1,15 @@
-export enum AppRoute {
-  RecipeBuilder = 'RecipeBuilder',
-  RecipeCard = 'RecipeCard',
-}
+import keymirror from 'keymirror';
 
-export enum BuilderRoute {
-  Fermentables,
-  Hops,
-  Mash,
-  Fermentation,
-  Style,
-}
+export const AppRoute = keymirror({
+  RECIPE_BUILDER: null,
+  RECIPE_CARD: null,
+  ROOT_MENU: null,
+});
+
+export const BuilderRoutes = keymirror({
+  FERMENTABLES: null,
+  HOPS: null,
+  MASH: null,
+  FERMENTATION: null,
+  STYLE: null,
+});

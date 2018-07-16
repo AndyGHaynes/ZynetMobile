@@ -1,13 +1,6 @@
 import {
-  Body,
-  Button,
   Container,
-  Header,
-  Icon,
-  Left,
-  Right,
   StyleProvider,
-  Title,
 } from 'native-base';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
@@ -27,24 +20,9 @@ export default class App extends Component {
           <Container
             theme={theme}
             style={{
-              backgroundColor: theme.defaultBackgroundColor
+              backgroundColor: theme.defaultBackgroundColor,
             }}
           >
-            <Header>
-              <Left>
-                <Button transparent>
-                  <Icon active name='arrow-dropleft' />
-                </Button>
-              </Left>
-              <Body>
-                <Title>Zynet</Title>
-              </Body>
-              <Right>
-                <Button transparent>
-                  <Icon active name='menu' />
-                </Button>
-              </Right>
-            </Header>
             <Navigator />
           </Container>
         </StyleProvider>
