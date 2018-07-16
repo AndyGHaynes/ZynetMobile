@@ -59,12 +59,13 @@ function filterIngredients(type: IngredientType) {
 }
 
 function randomizeIngredientType<T>(type: IngredientType): T[] {
-  const ingredients = {
-    [IngredientType.Malt]: () => filterIngredients(IngredientType.Malt),
-    [IngredientType.Hop]: () => filterIngredients(IngredientType.Hop),
-    [IngredientType.Yeast]: () => filterIngredients(IngredientType.Yeast),
-  }[type]();
-  const count = _.random(1, 4);
+  const high = {
+    [IngredientType.Malt]: 12,
+    [IngredientType.Hop]: 10,
+    [IngredientType.Yeast]: 4,
+  }[type];
+  const count = _.random(1, high);
+  const ingredients = filterIngredients(type);
   const indices = _.map(_.range(count), () => _.random(0, ingredients.length - 1));
   return _.map(indices, (i) => _.omit(ingredients[i], 'ingredientType'));
 }
