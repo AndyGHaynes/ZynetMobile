@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 });
 
 interface RecipeProps {
-  randomizeRecipe: () => void;
+  lookupRecipe: (id: string) => void;
   recipe: Recipe;
 }
 
@@ -54,6 +54,10 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
       modalOpen: false,
       modalTitle: null,
     };
+  }
+
+  componentDidMount() {
+    this.props.lookupRecipe('random');
   }
 
   setModalComponent = (title: string, component: JSX.Element): void => {
@@ -74,13 +78,7 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
 
   render() {
     if (!this.props.recipe) {
-      return (
-        <Content>
-          <TouchableRow onPress={this.props.randomizeRecipe}>
-            <Text>no recipe loaded</Text>
-          </TouchableRow>
-        </Content>
-      );
+      return null;
     }
     const {
       fermentables,
@@ -98,23 +96,21 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
     return (
       <Content style={styles.content}>
         <ScrollView>
-          <TouchableRow onPress={this.props.randomizeRecipe}>
-            <Card>
-              <CardItem>
-                <Body>
-                <Text style={styles.name}>
-                  {name}
-                </Text>
-                <Text>
-                  {style.name} {style.code}
-                </Text>
-                <Text>
-                  Last brewed {lastBrewed.fromNow()}
-                </Text>
-                </Body>
-              </CardItem>
-            </Card>
-          </TouchableRow>
+          <Card>
+            <CardItem>
+              <Body>
+              <Text style={styles.name}>
+                {name}
+              </Text>
+              <Text>
+                {style.name} {style.code}
+              </Text>
+              <Text>
+                Last brewed {lastBrewed.fromNow()}
+              </Text>
+              </Body>
+            </CardItem>
+          </Card>
           <RecipeDetailCard label='Fermentables'>
             {_.map(fermentables, (fermentable, i) => (
               <TouchableRow

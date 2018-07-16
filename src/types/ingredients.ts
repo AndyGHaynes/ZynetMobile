@@ -26,6 +26,7 @@ export abstract class Ingredient {
   categories?: string;
   characteristics?: string;
   description?: string;
+  id?: string;
   mfg?: string;
   name: string;
   properties?: IngredientProperty[];

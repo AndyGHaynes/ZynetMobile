@@ -1,5 +1,7 @@
-import recipe from './recipe';
+import {
+  lookupRecipe,
+} from './recipe_card';
 
 export default {
-  recipe,
+  lookupRecipe,
 };

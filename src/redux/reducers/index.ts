@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import recipe from './recipe';
+import recipeCard from './recipe_card';
 
 export default combineReducers({
-  recipe,
+  recipeCard,
 });

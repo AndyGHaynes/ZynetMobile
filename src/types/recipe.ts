@@ -1,5 +1,6 @@
 import { Moment }  from 'moment';
 
+import { LoadingScreen } from './components';
 import {
   Fermentable,
   Hop,
@@ -16,4 +17,9 @@ export class Recipe {
   hops?: Hop[];
   yeast?: Yeast[];
   mash?: MashSchedule;
+}
+
+export class RecipeCard extends LoadingScreen {
+  recipe: Recipe;
+  recipeId: string;
 }
