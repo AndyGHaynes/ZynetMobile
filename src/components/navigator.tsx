@@ -4,9 +4,9 @@ import { AppRoute } from '../constants/routes';
 import {
   RecipeCardContainer,
 } from '../redux/containers';
-import { RecipeBuilderNavigation } from './recipe_builder/index';
 import { Colors } from './core';
 import RootMenu from './menu';
+import { RecipeBuilderNavigation } from './recipe_builder/index';
 
 export default createStackNavigator({
   [AppRoute.RECIPE_BUILDER]: {

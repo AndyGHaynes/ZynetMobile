@@ -6,10 +6,13 @@ import { createBottomTabNavigator } from 'react-navigation';
 
 import { BuilderRoutes } from '../../constants/routes';
 import { Colors } from '../core';
+import {
+  FermentablesContainer,
+} from '../../redux/containers';
 
 const tab = () => null;
 export default createBottomTabNavigator({
-  [BuilderRoutes.FERMENTABLES]: tab,
+  [BuilderRoutes.FERMENTABLES]: FermentablesContainer,
   [BuilderRoutes.HOPS]: tab,
   [BuilderRoutes.MASH]: tab,
   [BuilderRoutes.FERMENTATION]: tab,
