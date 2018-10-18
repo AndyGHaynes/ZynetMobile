@@ -12,10 +12,12 @@ import {
 } from '../redux';
 import Navigator from './navigator';
 
+const store = configureStore();
+
 export default class App extends Component {
   render() {
     return (
-      <Provider store={configureStore()}>
+      <Provider store={store}>
         <StyleProvider style={getTheme(theme)}>
           <Container
             theme={theme}
