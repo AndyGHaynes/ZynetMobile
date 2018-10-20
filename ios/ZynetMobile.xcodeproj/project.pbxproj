@@ -49,7 +49,6 @@
 		757C38B027BF4D32AF49947C /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8D6CA0EFD264D60AF4DFCA7 /* rubicon-icon-font.ttf */; };
 		7C76DFAAC39949F2A751FB5B /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A78E76D221C47A58E977D05 /* Feather.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		A10091CD209ED9A300268C42 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A1C7153C209ED52D00BB4FDE /* Ionicons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		BB1FE3D4E95144248222775B /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6807EF9CD61455FB853E240 /* Roboto_medium.ttf */; };
 		C98626BBE3CC49B59B40F2D2 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB0D9252D4B64179A3F6908B /* Octicons.ttf */; };
@@ -389,7 +388,6 @@
 		71C22F47ACD445E191C04C7B /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		A1C7153C209ED52D00BB4FDE /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B34D46795487415C95B35F12 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		B6807EF9CD61455FB853E240 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -542,7 +540,6 @@
 		13B07FAE1A68108700A75B9A /* ZynetMobile */ = {
 			isa = PBXGroup;
 			children = (
-				A10091CC209ED8E300268C42 /* fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -679,14 +676,6 @@
 				2D02E4901E0B4A5D006451C7 /* ZynetMobile-tvOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A10091CC209ED8E300268C42 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				A1C7153C209ED52D00BB4FDE /* Ionicons.ttf */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		A1B29F842155F9A90093C1DF /* Recovered References */ = {
@@ -1203,7 +1192,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				A10091CD209ED9A300268C42 /* Ionicons.ttf in Resources */,
 				CE8A9CAC4B4546469EF21901 /* Entypo.ttf in Resources */,
 				292B483571584037AADA0F17 /* EvilIcons.ttf in Resources */,
 				0962538C2E5442DFB0474860 /* FontAwesome.ttf in Resources */,
