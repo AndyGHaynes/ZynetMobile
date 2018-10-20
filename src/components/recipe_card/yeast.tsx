@@ -5,22 +5,11 @@ import {
   View,
 } from 'native-base';
 import React from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
 
 import { Yeast } from '../../types/ingredients';
+import styles from './.styles/yeast';
 import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';
-
-const styles = StyleSheet.create({
-  detailCell: {
-    flex: 1,
-  },
-  headerCell: {
-    flex: 3,
-  },
-});
 
 export default (yeast: Yeast) => (
   <Col>
@@ -38,5 +27,5 @@ export default (yeast: Yeast) => (
     {_.map(yeast.starterSteps, (step, i) => (
       <View key={i} {...step} />
     ))}
-    </Col>
+  </Col>
 );

@@ -4,7 +4,7 @@ import { AppRoute } from '../constants/routes';
 import {
   RecipeCardContainer,
 } from '../redux/containers';
-import { Colors } from './core';
+import { Colors } from '../theme';
 import RootMenu from './menu';
 import { RecipeBuilderNavigation } from './recipe_builder/index';
 

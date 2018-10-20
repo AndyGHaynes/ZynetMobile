@@ -3,26 +3,11 @@ import {
 } from 'native-base';
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 
-import {
-  Colors,
-} from '../core';
 import IngredientDetail from './ingredient_detail';
-
-const styles = StyleSheet.create({
-  name: {
-    fontSize: 20,
-  },
-  mfg: {
-    color: Colors.gray,
-    fontVariant: ['small-caps'],
-    marginTop: 4,
-    flex: 1,
-  }
-});
+import styles from './.styles/ingredient_header';
 
 interface HeaderProps {
   name: string;

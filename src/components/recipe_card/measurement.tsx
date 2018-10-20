@@ -1,22 +1,9 @@
 import _ from 'lodash';
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
-import { Quantity } from '../core';
 import { Measurement } from '../../types/zymath';
-
-const styles = StyleSheet.create({
-  unit: {
-    fontSize: 16,
-    width: 28,
-    textAlign: 'center',
-  },
-  value: {
-    fontSize: 20,
-    textAlign: 'right',
-    width: 54,
-  },
-});
+import { Quantity } from '../core';
+import styles from './.styles/measurement';
 
 export default ({ unit, value }: Measurement) => (
   <Quantity

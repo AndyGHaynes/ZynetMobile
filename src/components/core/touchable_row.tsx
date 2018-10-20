@@ -1,16 +1,10 @@
 import React from 'react';
 import {
   GestureResponderEvent,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 
-const styles = StyleSheet.create({
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-  }
-});
+import styles from './.styles/touchable_row';
 
 interface TouchableProps {
   children: JSX.Element;

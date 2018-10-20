@@ -5,18 +5,10 @@ import {
 } from 'native-base';
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 
-import { Colors } from '../core';
-
-const styles = StyleSheet.create({
-  ingredientGroupLabel: {
-    color: Colors.gray,
-    fontVariant: ['small-caps'],
-  },
-});
+import styles from './.styles/recipe_detail_card';
 
 export default (props) => (
   <Card>

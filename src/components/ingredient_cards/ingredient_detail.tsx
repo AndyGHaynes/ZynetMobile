@@ -17,7 +17,7 @@ import {
 } from '../../types/ingredients';
 import {
   Colors,
-} from '../core';
+} from '../../theme';
 import IngredientProperties from './ingredient_properties';
 
 const styles = StyleSheet.create({

@@ -5,40 +5,14 @@ import {
 } from 'native-base';
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 
-import {
-  Colors,
-} from '../core';
 import { Fermentable as FermentableType } from '../../types/ingredients';
+import styles from './.styles/fermentable';
 import IngredientDetail from './ingredient_detail';
 import IngredientHeader from './ingredient_header';
-import Measurement from './measurement';
-
-const styles = StyleSheet.create({
-  colorBar: {
-    width: 14,
-    height: 48,
-  },
-  colorBarContainer: {
-    justifyContent: 'center',
-    paddingVertical: 8,
-  },
-  detail: {
-    color: Colors.grayDark,
-    fontSize: 16,
-    marginTop: 4,
-    textAlign: 'right',
-  },
-  detailCell: {
-    flex: 1,
-  },
-  headerCell: {
-    flex: 3,
-  },
-});
+import Measurement from './measurement'
 
 interface FermentableProps {
   fermentable: FermentableType;

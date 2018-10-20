@@ -5,7 +5,7 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 
 import { BuilderRoutes } from '../../constants/routes';
-import { Colors } from '../core';
+import { Colors } from '../../theme';
 import {
   FermentablesContainer,
 } from '../../redux/containers';

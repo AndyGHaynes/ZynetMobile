@@ -2,42 +2,14 @@ import _ from 'lodash';
 import { Row } from 'native-base';
 import React from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
-import { IngredientProperty } from '../../types/ingredients';
-import { Colors } from '../core';
+import { IngredientProperty as IngredientPropertyType } from '../../types/ingredients';
+import styles from './.styles/ingredient_properties';
+import IngredientProperty from './ingredient_property';
 
-const styles = StyleSheet.create({
-  ingredientProperties: {
-    flex: 1,
-    padding: 8,
-  },
-  ingredientProperty: {
-    flex: 1,
-    paddingHorizontal: 8,
-  },
-  name: {
-    color: Colors.gray,
-    fontWeight: '700',
-  },
-  nameContainer: {
-    position: 'relative',
-    top: 1,
-    left: 1,
-  },
-  propertyRow: {
-    marginBottom: 8,
-  },
-  value: {
-    fontSize: 14,
-  },
-  valueContainer: {},
-});
-
-function sortProperties(properties: IngredientProperty[]) {
+function sortProperties(properties: IngredientPropertyType[]) {
   return _.sortBy(
     properties,
     (property) => _.isNil(property.displayOrder)
@@ -46,29 +18,14 @@ function sortProperties(properties: IngredientProperty[]) {
   );
 }
 
-const ingredientProperty = (property: IngredientProperty) => (
-  <View key={property.name} style={styles.ingredientProperty}>
-    <View style={styles.nameContainer}>
-      <Text style={styles.name}>
-        {property.name}
-      </Text>
-    </View>
-    <View style={styles.valueContainer}>
-      <Text style={styles.value}>
-        {property.value}
-      </Text>
-    </View>
-  </View>
-);
-
-export default ({ properties }: { properties: IngredientProperty[] }) => (
+export default ({ properties }: { properties: IngredientPropertyType[] }) => (
   <View style={styles.ingredientProperties}>
     {_.map(_.chunk(sortProperties(properties), 2), (propertyRow) => (
       <Row
         key={_.join(_.map(propertyRow, 'name'), '|')}
         style={styles.propertyRow}
       >
-        {_.map(propertyRow, ingredientProperty)}
+        <IngredientProperty property={propertyRow} />
       </Row>
     ))}
   </View>
