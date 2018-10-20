@@ -25,7 +25,12 @@ export default ({ properties }: { properties: IngredientPropertyType[] }) => (
         key={_.join(_.map(propertyRow, 'name'), '|')}
         style={styles.propertyRow}
       >
-        <IngredientProperty property={propertyRow} />
+        {_.map(propertyRow, (property) => (
+          <IngredientProperty
+            key={`${property.key}|${property.value}`}
+            property={property}
+          />
+        ))}
       </Row>
     ))}
   </View>
