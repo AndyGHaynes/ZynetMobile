@@ -22,8 +22,8 @@ interface AdditionProps {
 
 const getAdditionIcon = (type: HopAdditionType) => {
   return {
-    [HopAdditionType.Boil]: 'fire',
-    [HopAdditionType.DryHop]: 'pot',
+    [HopAdditionType.Boil]: 'pot',
+    [HopAdditionType.DryHop]: 'barrel',
     [HopAdditionType.HopStand]: 'decagram',
     [HopAdditionType.Whirlpool]: 'ubisoft',
   }[type];

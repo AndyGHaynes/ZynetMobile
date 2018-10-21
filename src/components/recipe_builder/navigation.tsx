@@ -26,7 +26,7 @@ export default createBottomTabNavigator({
         [BuilderRoutes.HOPS]: 'hops',
         [BuilderRoutes.MASH]: 'pot',
         [BuilderRoutes.FERMENTATION]: 'flask',
-        [BuilderRoutes.STYLE]: 'glass-mug',
+        [BuilderRoutes.STYLE]: 'beer',
       }[navigation.state.routeName];
       return <Icon
         name={icon}
