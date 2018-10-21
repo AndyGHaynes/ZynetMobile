@@ -5,6 +5,11 @@ export enum HopAdditionType {
   Whirlpool = 'whirlpool',
 }
 
+export enum HopFormType {
+  Pellet = 'pellet',
+  WholeLeaf = 'whole leaf',
+}
+
 export enum IngredientType {
   Malt = 'malt',
   Hop = 'hop',

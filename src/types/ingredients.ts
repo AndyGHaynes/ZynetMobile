@@ -1,5 +1,6 @@
 import {
   HopAdditionType,
+  HopFormType,
   StarterAdditionType,
 } from '../constants/enums';
 import {
@@ -38,6 +39,7 @@ export class Hop extends Ingredient {
   alpha?: number;
   beta?: number;
   flavors?: string[];
+  form: HopFormType,
   aroma?: string;
 }
 

@@ -10,7 +10,7 @@ import {
 import { Recipe } from '../types/recipe';
 import { Gravity } from '../types/zymath';
 import {
-  HopAdditionType,
+  HopAdditionType, HopFormType,
   IngredientType,
   MashMethod,
   SpargeMethod,
@@ -24,15 +24,22 @@ function randomByIncrement(min: number, max: number, increment: number) {
   return min + (increment * _.random(0, max / increment));
 }
 
-function randomWithinRange(rawRange: string): number {
-  const range = _.map(
+function randomByRangeIncrement(range: Range, increment: number) {
+  return randomByIncrement(range.min, range.max, increment);
+}
+
+interface Range {
+  min: number,
+  max: number,
+}
+function parseRange(rawRange: string): Range {
+  const values = _.map(
     (rawRange || '').split('-'),
     _.parseInt
   );
-  if (range.length) {
-    return _.random(...range, true);
-  }
-  return null;
+  const min = _.parseInt(_.get(values, 0, null));
+  const max = _.parseInt(_.get(values, 1, min));
+  return { min, max };
 }
 
 function parseRanges(ingredient: Ingredient) {
@@ -75,9 +82,9 @@ function filterIngredients(type: IngredientType) {
 
 function randomizeIngredientType<T>(type: IngredientType): T[] {
   const high = {
-    [IngredientType.Malt]: 12,
-    [IngredientType.Hop]: 10,
-    [IngredientType.Yeast]: 4,
+    [IngredientType.Malt]: 4,
+    [IngredientType.Hop]: 3,
+    [IngredientType.Yeast]: 2,
   }[type];
   const count = _.random(1, high);
   const ingredients = filterIngredients(type);
@@ -104,11 +111,14 @@ function getFermentables(): Fermentable[] {
 
 function getHopAdditions(): Hop[] {
   const randomHops = randomizeIngredientType<Hop>(IngredientType.Hop);
+  const randomizeAcid = (rawRange: string) =>
+    _.round(randomByRangeIncrement(parseRange(rawRange), 0.1), 1);
   return _.map(randomHops, (hop) => ({
     ...hop,
-    alpha: randomWithinRange(hop.alphaRange),
-    beta: randomWithinRange(hop.betaRange),
-    additions: _.map(_.range(_.random(1, 3)), () => ({
+    alpha: randomizeAcid(hop.alphaRange),
+    beta: randomizeAcid(hop.betaRange),
+    form: HopFormType.Pellet,
+    additions: _.orderBy(_.map(_.range(_.random(1, 3)), () => ({
       time: { value: _.random(0, 60), unit: Units.Minute },
       type: HopAdditionType.Boil,
       weight: {
@@ -116,7 +126,7 @@ function getHopAdditions(): Hop[] {
         unit: Units.Ounce,
       },
       ibu: _.random(0, 80),
-    })),
+    })), 'time.value', ['desc']),
   }));
 }
 

@@ -8,12 +8,13 @@ import { BuilderRoutes } from '../../constants/routes';
 import { Colors } from '../../theme';
 import {
   FermentablesContainer,
+  HopsContainer,
 } from '../../redux/containers';
 
 const tab = () => null;
 export default createBottomTabNavigator({
   [BuilderRoutes.FERMENTABLES]: FermentablesContainer,
-  [BuilderRoutes.HOPS]: tab,
+  [BuilderRoutes.HOPS]: HopsContainer,
   [BuilderRoutes.MASH]: tab,
   [BuilderRoutes.FERMENTATION]: tab,
   [BuilderRoutes.STYLE]: tab,
