@@ -40,15 +40,16 @@ export default ({ visible, close, title, children }: ModalProps) => (
       <ScrollView>
         {children}
       </ScrollView>
-      <Button
-        block
-        onPress={close}
-        style={styles.closeButton}
-      >
-        <Text style={styles.closeButtonText}>
-          Close
-        </Text>
-      </Button>
+      <View style={styles.closeButton}>
+        <Button
+          block
+          onPress={close}
+        >
+          <Text style={styles.closeButtonText}>
+            Close
+          </Text>
+        </Button>
+      </View>
     </View>
   </Modal>
 );

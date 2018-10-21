@@ -3,13 +3,13 @@ import {
   Body,
   Card,
   CardItem,
-  Content,
 } from 'native-base';
 import React, { Component } from 'react';
 import {
   ScrollView,
   StyleSheet,
   Text,
+  View
 } from 'react-native';
 
 import { Recipe } from '../../types/recipe';
@@ -94,7 +94,7 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
       modalTitle,
     } = this.state;
     return (
-      <Content style={styles.content}>
+      <View style={styles.content}>
         <ScrollView>
           <Card>
             <CardItem>
@@ -170,7 +170,7 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
         >
           {modalComponent}
         </IngredientModal>
-      </Content>
+      </View>
     );
   }
 }

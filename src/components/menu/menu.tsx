@@ -1,6 +1,5 @@
 import {
   Button,
-  Content,
 } from 'native-base';
 import React from 'react';
 import {
@@ -16,27 +15,27 @@ export default (props: NavigationProps) => {
   const { navigation } = props;
   const navigateTo = (route: string) => () => navigation.navigate(route);
   return (
-    <Content style={styles.content}>
-      <View>
+    <View style={styles.content}>
+      <View style={styles.button}>
         <Button
           block
           onPress={navigateTo(AppRoute.RECIPE_BUILDER)}
-          style={styles.button}
         >
           <Text style={styles.buttonText}>
             New Recipe
           </Text>
         </Button>
+      </View>
+      <View style={styles.button}>
         <Button
           block
           onPress={navigateTo(AppRoute.RECIPE_CARD)}
-          style={styles.button}
         >
           <Text style={styles.buttonText}>
             Random Recipe
           </Text>
         </Button>
       </View>
-    </Content>
+    </View>
   );
 }
