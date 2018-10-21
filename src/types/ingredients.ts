@@ -39,7 +39,7 @@ export class Hop extends Ingredient {
   alpha?: number;
   beta?: number;
   flavors?: string[];
-  form: HopFormType,
+  form: HopFormType;
   aroma?: string;
 }
 
