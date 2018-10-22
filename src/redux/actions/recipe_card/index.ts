@@ -1,12 +1,12 @@
-import { randomizeRecipe } from '../../../constants/ingredients';
+import { randomizeRecipe } from '../../../utils/ingredients';
 import ActionTypes from './types';
 
-export const lookupRecipe = (recipeId: string) => (dispatch) => {
+export const lookupRecipe = (recipeId: string) => async (dispatch) => {
   dispatch({ type: ActionTypes.RECIPE_LOADING });
   if (recipeId === 'random') {
     dispatch({
       type: ActionTypes.RECIPE_LOADED,
-      recipe: randomizeRecipe(),
+      recipe: await randomizeRecipe(),
     });
   } else {
     dispatch({

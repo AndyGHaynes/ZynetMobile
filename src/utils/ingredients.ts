@@ -10,15 +10,16 @@ import {
 import { Recipe } from '../types/recipe';
 import { Gravity } from '../types/zymath';
 import {
-  HopAdditionType, HopFormType,
+  HopAdditionType,
+  HopFormType,
   IngredientType,
   MashMethod,
   SpargeMethod,
   StarterAdditionType,
-} from './enums';
-import SRMColors from './srm_color';
-import Units from './units';
-import raw from './raw_ingredients';
+} from '../constants/enums';
+import SRMColors from '../constants/srm_color';
+import Units from '../constants/units';
+import { getIngredients } from '../db';
 
 function randomByIncrement(min: number, max: number, increment: number) {
   return min + (increment * _.random(0, max / increment));
@@ -71,29 +72,28 @@ function parseRanges(ingredient: Ingredient) {
   };
 }
 
-function filterIngredients(type: IngredientType) {
+function filterIngredients(ingredients: Ingredient[], type: IngredientType): Ingredient[] {
   const index = {
     [IngredientType.Malt]: 1,
     [IngredientType.Hop]: 2,
     [IngredientType.Yeast]: 3,
   }[type];
-  return _.map(_.filter(raw, { ingredientType: index }), parseRanges);
+  return _.map(_.filter(ingredients, { ingredientType: index }), parseRanges);
 }
 
-function randomizeIngredientType<T>(type: IngredientType): T[] {
+function randomizeIngredientType<T>(ingredients: Ingredient[], type: IngredientType): T[] {
   const high = {
     [IngredientType.Malt]: 4,
     [IngredientType.Hop]: 3,
     [IngredientType.Yeast]: 2,
   }[type];
   const count = _.random(1, high);
-  const ingredients = filterIngredients(type);
-  const indices = _.map(_.range(count), () => _.random(0, ingredients.length - 1));
-  return _.map(indices, (i) => _.omit(ingredients[i], 'ingredientType'));
+  const filtered = filterIngredients(ingredients, type);
+  const indices = _.map(_.range(count), () => _.random(0, filtered.length - 1));
+  return _.map(indices, (i) => _.omit(filtered[i], 'ingredientType'));
 }
 
-function getFermentables(): Fermentable[] {
-  const grains = randomizeIngredientType<Fermentable>(IngredientType.Malt);
+function randomizeFermentables(grains: Ingredient[]): Fermentable[] {
   return _.map(grains, (grain) => {
     const lovibond = _.parseInt(grain.lovibond) || 0;
     const srm = 1.4922 * Math.pow(lovibond, 0.6859);
@@ -109,11 +109,10 @@ function getFermentables(): Fermentable[] {
   });
 }
 
-function getHopAdditions(): Hop[] {
-  const randomHops = randomizeIngredientType<Hop>(IngredientType.Hop);
+function randomizeHopAdditions(hops: Ingredient[]): Hop[] {
   const randomizeAcid = (rawRange: string) =>
     _.round(randomByRangeIncrement(parseRange(rawRange), 0.1), 1);
-  return _.map(randomHops, (hop) => ({
+  return _.map(hops, (hop) => ({
     ...hop,
     alpha: randomizeAcid(hop.alphaRange),
     beta: randomizeAcid(hop.betaRange),
@@ -130,8 +129,7 @@ function getHopAdditions(): Hop[] {
   }));
 }
 
-function getYeasts(): Yeast[] {
-  const yeasts = randomizeIngredientType<Yeast>(IngredientType.Yeast);
+function randomizeYeasts(yeasts: Ingredient[]): Yeast[] {
   return _.map(yeasts, (yeast) => ({
     ...yeast,
     pitchTemp: { value: 68, unit: Units.Fahrenheit },
@@ -153,26 +151,41 @@ function getYeasts(): Yeast[] {
   }));
 }
 
-export const randomizeRecipe = (): Recipe => {
-  const orderIngredients = (ingredients, primarySort) =>
-    _.orderBy(ingredients, [primarySort, 'name'], ['desc', 'asc']);
-  const brewDate = moment().subtract(_.random(3, 432), 'days');
-  return {
-    name: 'Golden Brett Ale',
-    style: { name: 'Brett Ale', code: '28A' },
-    lastBrewed: brewDate,
-    fermentables: orderIngredients(getFermentables(), 'weight.value'),
-    hops: orderIngredients(getHopAdditions(), (hop) => _.sumBy(hop.additions, 'weight.value')),
-    yeast: orderIngredients(getYeasts(), 'quantity'),
-    mash: {
-      efficiency: 0.75,
-      method: MashMethod.BIAB,
-      sparge: SpargeMethod.None,
-      rests: [{
-        recirculated: true,
-        temperature: { value: 152, unit: Units.Fahrenheit },
-        time: { value: 60, unit: Units.Minute },
-      }],
-    },
-  }
+export const randomizeRecipe = (): Promise<Recipe> => {
+  return getIngredients()
+    .then((ingredients) => {
+      const orderIngredients = (ingredientSet, primarySort) =>
+        _.orderBy(ingredientSet, [primarySort, 'name'], ['desc', 'asc']);
+      const brewDate = moment().subtract(_.random(3, 432), 'days');
+      const fermentables = randomizeIngredientType<Fermentable>(ingredients, IngredientType.Malt);
+      const hops = randomizeIngredientType<Hop>(ingredients, IngredientType.Hop);
+      const yeast = randomizeIngredientType<Yeast>(ingredients, IngredientType.Yeast);
+      return {
+        name: 'Golden Brett Ale',
+        style: { name: 'Brett Ale', code: '28A' },
+        lastBrewed: brewDate,
+        fermentables: orderIngredients(
+          randomizeFermentables(fermentables),
+          'weight.value'
+        ),
+        hops: orderIngredients(
+          randomizeHopAdditions(hops),
+          (hop) => _.sumBy(hop.additions, 'weight.value')
+        ),
+        yeast: orderIngredients(
+          randomizeYeasts(yeast),
+          'quantity'
+        ),
+        mash: {
+          efficiency: 0.75,
+          method: MashMethod.BIAB,
+          sparge: SpargeMethod.None,
+          rests: [{
+            recirculated: true,
+            temperature: { value: 152, unit: Units.Fahrenheit },
+            time: { value: 60, unit: Units.Minute },
+          }],
+        },
+      };
+    });
 };

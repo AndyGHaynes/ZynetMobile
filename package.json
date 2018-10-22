@@ -17,6 +17,7 @@
     "keymirror": "^0.1.1",
     "moment": "^2.22.2",
     "native-base": "^2.4.3",
+    "pouchdb-react-native": "^6.4.1",
     "react": "16.4.1",
     "react-native": "0.56.1",
     "react-native-modal": "^6.1.0",
