@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 
 import RecipeCard from '../../components/recipe_card';
-import actions from '../actions';
+import CardActions from '../actions/recipe_card/types';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +12,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  lookupRecipe: (id: string) => dispatch(actions.lookupRecipe(id)),
+  lookupRecipe: (recipeId: string) => dispatch({
+    type: CardActions.RECIPE_LOADING,
+    recipeId,
+  }),
 });
 
 export default connect(

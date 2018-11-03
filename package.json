@@ -27,7 +27,7 @@
     "react-navigation": "^2.18.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
+    "redux-saga": "^0.16.2",
     "tslib": "^1.9.2"
   },
   "devDependencies": {
@@ -40,6 +40,9 @@
     "concurrently": "^3.5.1",
     "jest": "22.4.2",
     "react-test-renderer": "^16.3.0-alpha.1",
+    "reactotron-react-native": "^2.1.0",
+    "reactotron-redux": "^2.1.0",
+    "reactotron-redux-saga": "^2.1.0",
     "redux-devtools": "^3.4.1",
     "rimraf": "^2.6.2",
     "tslint": "^5.9.1",

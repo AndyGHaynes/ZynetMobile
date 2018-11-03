@@ -1,17 +1,22 @@
+import { put } from 'redux-saga/effects';
+
 import { randomizeRecipe } from '../../../utils/ingredients';
 import ActionTypes from './types';
 
-export const lookupRecipe = (recipeId: string) => async (dispatch) => {
-  dispatch({ type: ActionTypes.RECIPE_LOADING });
+type RecipeLookup = {
+  recipeId: string;
+}
+
+export function* lookupRecipe({ recipeId }: RecipeLookup) {
   if (recipeId === 'random') {
-    dispatch({
+    yield put({
       type: ActionTypes.RECIPE_LOADED,
-      recipe: await randomizeRecipe(),
+      recipe: yield randomizeRecipe(),
     });
   } else {
-    dispatch({
+    yield put({
       type: ActionTypes.RECIPE_LOADING_ERROR,
       errorMessage: 'only random',
     });
   }
-};
+}

@@ -1,19 +1,27 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import {
+  applyMiddleware,
+  createStore as createReduxStore,
+} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 import loggerMiddleware from './middleware/logger';
+import Reactotron from './reactotron';
 import rootReducer from './reducers';
+import sagas from './sagas';
 import { AppState } from './types';
 
+const isDev = process.env.ENV === 'dev';
+const createStore = isDev ? Reactotron.createStore : createReduxStore;
+const sagaMonitor = isDev ? Reactotron.createSagaMonitor() : {};
+
 export default function configureStore(preloadedState?: AppState) {
-  const middlewareEnhancer = applyMiddleware(
+  const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+  const middleware = applyMiddleware(
     loggerMiddleware,
-    thunkMiddleware,
+    sagaMiddleware,
   );
 
-  const composedEnhancers = compose(
-    middlewareEnhancer,
-  );
-
-  return createStore(rootReducer, preloadedState, composedEnhancers);
+  const store = createStore(rootReducer, preloadedState, middleware);
+  sagaMiddleware.run(sagas);
+  return store;
 };
