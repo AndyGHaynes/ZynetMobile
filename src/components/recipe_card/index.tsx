@@ -9,7 +9,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
 
 import { Recipe } from '../../types/recipe';
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 });
 
 interface RecipeProps {
-  lookupRecipe: (id: string) => void;
+  loadRecipe: (id: string) => void;
   recipe: Recipe;
 }
 
@@ -57,7 +57,7 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
   }
 
   componentDidMount() {
-    this.props.lookupRecipe('random');
+    this.props.loadRecipe('random');
   }
 
   setModalComponent = (title: string, component: JSX.Element): void => {

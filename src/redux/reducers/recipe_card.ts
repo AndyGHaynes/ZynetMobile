@@ -1,5 +1,5 @@
 import { RecipeCard } from '../../types/recipe';
-import ActionTypes from '../actions/recipe_card/types';
+import { ActionTypes } from '../actions/recipe_card';
 
 export default (state: RecipeCard = null, action): RecipeCard => {
   switch (action.type) {

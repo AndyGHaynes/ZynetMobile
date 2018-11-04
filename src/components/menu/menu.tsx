@@ -11,15 +11,14 @@ import { AppRoute } from '../../constants/routes';
 import { NavigationProps } from '../../types/navigation';
 import styles from './.styles/menu';
 
-export default (props: NavigationProps) => {
-  const { navigation } = props;
-  const navigateTo = (route: string) => () => navigation.navigate(route);
+export default ({ navigation }: NavigationProps) => {
+  const { navigate } = navigation;
   return (
     <View style={styles.content}>
       <View style={styles.button}>
         <Button
           block
-          onPress={navigateTo(AppRoute.RECIPE_BUILDER)}
+          onPress={() => navigate(AppRoute.RECIPE_BUILDER)}
         >
           <Text style={styles.buttonText}>
             New Recipe
@@ -29,7 +28,7 @@ export default (props: NavigationProps) => {
       <View style={styles.button}>
         <Button
           block
-          onPress={navigateTo(AppRoute.RECIPE_CARD)}
+          onPress={() => navigate(AppRoute.RECIPE_CARD)}
         >
           <Text style={styles.buttonText}>
             Random Recipe
