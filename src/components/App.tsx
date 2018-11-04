@@ -1,34 +1,13 @@
-import {
-  Container,
-  StyleProvider,
-} from 'native-base';
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 
-import getTheme from '../../native-base-theme/components';
-import theme from '../../native-base-theme/variables/custom';
-import {
-  configureStore,
-} from '../redux';
-import Navigator from './navigator';
+import AppContainer from '../redux/containers/app';
+import { configureStore } from '../redux';
 
 const store = configureStore();
 
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <StyleProvider style={getTheme(theme)}>
-          <Container
-            theme={theme}
-            style={{
-              backgroundColor: theme.defaultBackgroundColor,
-            }}
-          >
-            <Navigator />
-          </Container>
-        </StyleProvider>
-      </Provider>
-    );
-  }
-}
+export default () => (
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>
+);

@@ -1,26 +1,49 @@
 import _ from 'lodash';
 import PouchDB from 'pouchdb-react-native';
 
-import {
-  Ingredient,
-} from '../types/ingredients';
+import { IngredientType } from '../constants/enums';
+import { Ingredient } from '../types/ingredients';
 
+let ingredientDB = null;
 const dbName = 'ingredients';
-const url = `http://localhost:5984/${dbName}`;
+const url = `http://192.168.1.131/couchdb/${dbName}`;
 
-const ingredientDB = new PouchDB(dbName);
-PouchDB.replicate(url, ingredientDB);
+export function initializeDB() {
+  ingredientDB = new PouchDB(dbName);
+}
+
+export function syncDB() {
+  if (!ingredientDB) {
+    throw new Error('must initialize DB before synchronization');
+  }
+  PouchDB.replicate(url, ingredientDB);
+}
 
 export function getIngredients(): Promise<Ingredient[]> {
   return ingredientDB.allDocs({
     include_docs: true,
   })
-    .then((response) => {
-      console.log('ingredientDB response', response);
-      return _.map(response.rows, 'doc');
-    })
+    .then((response) =>
+      _.map(response.rows, (row) => _.omit(row.doc, ['_id', '_rev']))
+    )
     .catch((e) => {
       console.log('allDocs() error', e);
       return null;
     });
+}
+
+export function searchIngredients<T>(ingredientType: IngredientType, searchTerm: string): T[] {
+  return ingredientDB.find({
+    selector: {
+      ingredientType: {
+        [IngredientType.Malt]: 1,
+        [IngredientType.Hop]: 2,
+        [IngredientType.Yeast]: 3,
+      }[ingredientType],
+      name: {
+        $regex: new RegExp(`.*${searchTerm}.*`, 'ig'),
+      },
+    },
+    sort: ['name'],
+  });
 }
