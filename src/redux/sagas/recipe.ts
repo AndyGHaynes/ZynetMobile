@@ -1,4 +1,4 @@
-import { put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
 import { randomizeRecipe } from '../../utils/ingredients';
 import { ActionTypes } from '../actions/recipe_card';
@@ -11,9 +11,10 @@ type RecipeLookup = {
 
 function* loadRecipe({ recipeId }: RecipeLookup) {
   if (recipeId === 'random') {
+    const recipe = yield call(randomizeRecipe);
     yield put({
       type: ActionTypes.RECIPE_LOADED,
-      recipe: yield randomizeRecipe(),
+      recipe,
     });
   } else {
     yield put({

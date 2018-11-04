@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { initializeDB, syncDB } from '../../db';
 import {
@@ -9,14 +9,14 @@ import {
 
 export function* initializeIngredientDB() {
   yield put(initIngredientDB());
-  yield initializeDB();
+  yield call(initializeDB);
   // TODO only attempt sync if DB out of date
   yield put(syncIngredientDB());
   yield put({ type: ActionTypes.INGREDIENT_DB_INITIALIZED });
 }
 
 function* synchronizeIngredientDB() {
-  yield syncDB();
+  yield call(syncDB);
   yield put({ type: ActionTypes.INGREDIENT_DB_SYNCED });
 }
 
