@@ -19,6 +19,7 @@
     "pouchdb-react-native": "^6.4.1",
     "react": "16.4.1",
     "react-native": "0.56.1",
+    "react-native-linear-gradient": "^2.4.3",
     "react-native-modal": "^6.1.0",
     "react-native-svg": "^6.4.1",
     "react-native-svg-charts": "^5.2.0",
