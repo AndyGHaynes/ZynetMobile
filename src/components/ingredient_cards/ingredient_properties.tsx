@@ -1,11 +1,11 @@
 import _ from 'lodash';
-import { Row } from 'native-base';
 import React from 'react';
 import {
   View,
 } from 'react-native';
 
 import { IngredientProperty as IngredientPropertyType } from '../../types/ingredients';
+import { Row } from '../core';
 import styles from './.styles/ingredient_properties';
 import IngredientProperty from './ingredient_property';
 

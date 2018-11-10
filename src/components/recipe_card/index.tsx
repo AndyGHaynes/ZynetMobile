@@ -1,9 +1,4 @@
 import _ from 'lodash';
-import {
-  Body,
-  Card,
-  CardItem,
-} from 'native-base';
 import React, { Component } from 'react';
 import {
   ScrollView,
@@ -13,7 +8,7 @@ import {
 } from 'react-native';
 
 import { Recipe } from '../../types/recipe';
-import { TouchableRow } from '../core';
+import { Card, TouchableRow } from '../core';
 import {
   FermentableDetailCard,
   HopDetailCard,
@@ -97,19 +92,21 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
       <View style={styles.content}>
         <ScrollView>
           <Card>
-            <CardItem>
-              <Body>
+            <View>
               <Text style={styles.name}>
                 {name}
               </Text>
+            </View>
+            <View>
               <Text>
                 {style.name} {style.code}
               </Text>
+            </View>
+            <View>
               <Text>
                 Last brewed {lastBrewed.fromNow()}
               </Text>
-              </Body>
-            </CardItem>
+            </View>
           </Card>
           <RecipeDetailCard label='Fermentables'>
             {_.map(fermentables, (fermentable, i) => (

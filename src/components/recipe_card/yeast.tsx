@@ -1,12 +1,9 @@
 import _ from 'lodash';
-import {
-  Col,
-  Row,
-  View,
-} from 'native-base';
 import React from 'react';
+import { View } from 'react-native';
 
 import { Yeast } from '../../types/ingredients';
+import { Col, Row } from '../core';
 import styles from './.styles/yeast';
 import IngredientHeader from './ingredient_header';
 import Measurement from './measurement';

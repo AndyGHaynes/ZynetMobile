@@ -1,14 +1,12 @@
 import _ from 'lodash';
-import {
-  Row,
-  View,
-} from 'native-base';
 import React from 'react';
 import {
   Text,
+  View,
 } from 'react-native';
 
 import { Fermentable as FermentableType } from '../../types/ingredients';
+import { Row } from '../core';
 import styles from './.styles/fermentable';
 import IngredientDetail from './ingredient_detail';
 import IngredientHeader from './ingredient_header';

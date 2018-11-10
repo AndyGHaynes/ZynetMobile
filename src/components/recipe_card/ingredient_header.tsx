@@ -1,11 +1,9 @@
-import {
-  Row,
-} from 'native-base';
 import React from 'react';
 import {
   Text,
 } from 'react-native';
 
+import { Row } from '../core'
 import IngredientDetail from './ingredient_detail';
 import styles from './.styles/ingredient_header';
 

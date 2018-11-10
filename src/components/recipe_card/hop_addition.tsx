@@ -1,15 +1,13 @@
 import React from 'react';
 import {
-  Row,
-  View,
-} from 'native-base';
-import {
   Text,
+  View,
 } from 'react-native';
 
 import { HopAddition } from '../../types/ingredients';
 import {
   Quantity,
+  Row,
 } from '../core';
 import styles from './.styles/hop_addition';
 import Measurement from './measurement';

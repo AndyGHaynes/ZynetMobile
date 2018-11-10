@@ -1,17 +1,15 @@
 import _ from 'lodash';
-import {
-  Col,
-  Row,
-  View,
-} from 'native-base';
 import React from 'react';
 import {
   Text,
+  View,
 } from 'react-native';
 
 import { Hop } from '../../types/ingredients';
 import {
+  Col,
   Quantity,
+  Row,
 } from '../core';
 import styles from './.styles/hop';
 import HopAddition from './hop_addition';

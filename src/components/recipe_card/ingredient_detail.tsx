@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'native-base';
+import { View } from 'react-native';
 
 import styles from './.styles/ingredient_detail';
 

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { Hop } from '../../../../types/ingredients';
+import { Card } from '../../../core';
 import styles from './.styles/hop';
 import Addition from './addition';
 
@@ -17,7 +18,7 @@ interface Props {
 }
 
 export default ({ hop }: Props) => (
-  <View style={styles.container}>
+  <Card>
     <View style={styles.header}>
       <View style={styles.name}>
         <Text style={styles.nameText}>
@@ -54,5 +55,5 @@ export default ({ hop }: Props) => (
         />
       ))}
     </View>
-  </View>
+  </Card>
 );

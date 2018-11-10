@@ -7,4 +7,7 @@ export default StyleSheet.create({
     color: Colors.gray,
     fontVariant: ['small-caps'],
   },
+  recipeCard: {
+    paddingRight: 4,
+  },
 });

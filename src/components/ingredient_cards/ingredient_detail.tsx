@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import {
   Icon,
-  Row,
 } from 'native-base';
 import React from 'react';
 import {
@@ -14,6 +13,7 @@ import {
 import {
   Ingredient,
 } from '../../types/ingredients';
+import { Row } from '../core';
 import styles from './.styles/ingredient_detail';
 import IngredientProperties from './ingredient_properties';
 
