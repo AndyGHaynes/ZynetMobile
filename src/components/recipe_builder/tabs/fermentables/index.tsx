@@ -1,39 +1,15 @@
 import _ from 'lodash';
-import {
-  Input,
-  Item,
-} from 'native-base';
 import React, { Component } from 'react';
 import {
-  Dimensions,
   ScrollView,
-  StyleSheet,
   View,
 } from 'react-native';
 
 import { Fermentable } from '../../../../types/ingredients';
 import { TouchableRow } from '../../../core';
 import FermentableComponent from '../../../recipe_card/fermentable';
+import styles, { CHART_HEIGHT } from './.styles/fermentables';
 import FermentablesChart from './chart';
-
-const chartHeight = 170;
-const { height } = Dimensions.get('window');
-const scrollHeight = height - (210 + chartHeight);
-
-const styles = StyleSheet.create({
-  tabContainer: {
-    paddingHorizontal: 8,
-  },
-  chartContainer: {
-    height: chartHeight,
-    marginVertical: 10,
-  },
-  fermentablesContainer: {
-    height: scrollHeight,
-    paddingTop: 12,
-    position: 'relative',
-  },
-});
 
 interface FermentableProps {
   fermentables: Fermentable[];
@@ -59,17 +35,13 @@ export default class FermentablesTab extends Component<FermentableProps, Ferment
   };
 
   render() {
-    const {
-      fermentables,
-    } = this.props;
+    const { fermentables } = this.props;
+    const totalWeight = _.sumBy(fermentables, (f) => f.weight.value);
     return (
       <View style={styles.tabContainer}>
-        <Item>
-          <Input placeholder='Search Fermentables' />
-        </Item>
         <View style={styles.chartContainer}>
           <FermentablesChart
-            chartHeight={chartHeight}
+            chartHeight={CHART_HEIGHT}
             fermentables={fermentables}
             selectSegment={this.selectSegment}
           />
@@ -78,11 +50,11 @@ export default class FermentablesTab extends Component<FermentableProps, Ferment
           {_.map(fermentables, (fermentable) => (
             <TouchableRow
               key={fermentable.name}
-              onPress={() => {}}
+              onPress={_.noop}
             >
               <FermentableComponent
                 fermentable={fermentable}
-                fraction={_.round(fermentable.weight.value / _.sumBy(fermentables, (f) => f.weight.value), 2)}
+                fraction={_.round(fermentable.weight.value / totalWeight, 2)}
               />
             </TouchableRow>
           ))}
