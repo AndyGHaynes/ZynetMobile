@@ -23,5 +23,9 @@ export default function configureStore(preloadedState?: AppState) {
 
   const store = createStore(rootReducer, preloadedState, middleware);
   sagaMiddleware.run(sagas);
+  if (isDev) {
+    // must be called after createStore to avoid race condition
+    Reactotron.connect();
+  }
   return store;
 };

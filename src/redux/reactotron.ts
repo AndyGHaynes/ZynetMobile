@@ -6,7 +6,6 @@ const reactotron: any = Reactotron
   .configure()
   .useReactNative()
   .use(reactotronRedux())
-  .use(sagaPlugin())
-  .connect();
+  .use(sagaPlugin());
 
 export default reactotron;
