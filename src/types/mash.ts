@@ -28,3 +28,7 @@ export class MashSchedule {
   losses?: Loss[];
   mashout?: Rest;
 }
+
+export class Mash {
+  schedule?: MashSchedule;
+}

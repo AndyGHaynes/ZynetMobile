@@ -6,17 +6,21 @@ import {
   Hop,
   Yeast,
 } from './ingredients';
-import { MashSchedule } from './mash';
+import { Mash } from './mash';
 import { Style } from './style';
+import { Gravity, Measurement } from './zymath';
 
 export class Recipe {
+  targetFG?: Gravity;
+  targetOG?: Gravity;
+  targetVolume: Measurement;
   name: string;
   style?: Style;
   lastBrewed?: Moment;
   fermentables?: Fermentable[];
   hops?: Hop[];
   yeast?: Yeast[];
-  mash?: MashSchedule;
+  mash?: Mash;
 }
 
 export class RecipeCard extends LoadingScreen {

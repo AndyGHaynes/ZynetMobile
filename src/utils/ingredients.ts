@@ -13,6 +13,7 @@ import {
   HopAdditionType,
   HopFormType,
   IngredientType,
+  LossType,
   MashMethod,
   SpargeMethod,
   StarterAdditionType,
@@ -83,9 +84,9 @@ function filterIngredients(ingredients: Ingredient[], type: IngredientType): Ing
 
 function randomizeIngredientType<T>(ingredients: Ingredient[], type: IngredientType): T[] {
   const high = {
-    [IngredientType.Malt]: 4,
-    [IngredientType.Hop]: 3,
-    [IngredientType.Yeast]: 2,
+    [IngredientType.Malt]: 8,
+    [IngredientType.Hop]: 6,
+    [IngredientType.Yeast]: 3,
   }[type];
   const count = _.random(1, high);
   const filtered = filterIngredients(ingredients, type);
@@ -154,6 +155,7 @@ function randomizeYeasts(yeasts: Ingredient[]): Yeast[] {
 export const randomizeRecipe = (): Promise<Recipe> => {
   return getIngredients()
     .then((ingredients) => {
+      console.log('INGREDIENTS', ingredients);
       const orderIngredients = (ingredientSet, primarySort) =>
         _.orderBy(ingredientSet, [primarySort, 'name'], ['desc', 'asc']);
       const brewDate = moment().subtract(_.random(3, 432), 'days');
@@ -177,14 +179,43 @@ export const randomizeRecipe = (): Promise<Recipe> => {
           'quantity'
         ),
         mash: {
-          efficiency: 0.75,
-          method: MashMethod.BIAB,
-          sparge: SpargeMethod.None,
-          rests: [{
-            recirculated: true,
-            temperature: { value: 152, unit: Units.Fahrenheit },
-            time: { value: 60, unit: Units.Minute },
-          }],
+          schedule: {
+            efficiency: 0.75,
+            losses: [{
+              type: LossType.Boil,
+              rate: {
+                antecedent: Units.Gallon,
+                consequent: Units.Hour,
+                value: 1,
+              },
+            }, {
+              type: LossType.Grains,
+              rate: {
+                antecedent: Units.Gallon,
+                consequent: Units.Pound,
+                value: 0.1,
+              },
+            }],
+            method: MashMethod.BIAB,
+            rests: [{
+              recirculated: true,
+              temperature: { value: 104, unit: Units.Fahrenheit },
+              time: { value: 30, unit: Units.Minute },
+            }, {
+              recirculated: true,
+              temperature: { value: 140, unit: Units.Fahrenheit },
+              time: { value: 30, unit: Units.Minute },
+            }, {
+              recirculated: true,
+              temperature: { value: 158, unit: Units.Fahrenheit },
+              time: { value: 30, unit: Units.Minute },
+            }],
+            sparge: SpargeMethod.None,
+          },
+        },
+        targetVolume: {
+          unit: Units.Gallon,
+          value: 5,
         },
       };
     });
