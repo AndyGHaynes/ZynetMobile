@@ -23,12 +23,4 @@ export default StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 1.5,
   },
-  col: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-  },
 });

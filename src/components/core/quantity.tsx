@@ -5,7 +5,14 @@ import {
 
 import { Row } from '../core';
 
-export default ({ unit, unitStyle, value, valueStyle }) => (
+type Props = {
+  unit: String,
+  unitStyle?: any,
+  value: Number,
+  valueStyle?: any,
+}
+
+export default ({ unit, unitStyle, value, valueStyle }: Props) => (
   <Row>
     <Text style={valueStyle}>
       {value}
