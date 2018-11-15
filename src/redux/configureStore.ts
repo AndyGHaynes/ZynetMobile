@@ -4,15 +4,15 @@ import {
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import { isDev } from '../utils/environment';
 import loggerMiddleware from './middleware/logger';
 import Reactotron from './reactotron';
 import rootReducer from './reducers';
 import sagas from './sagas';
 import { AppState } from './types';
 
-const isDev = process.env.ENV === 'dev';
-const createStore = isDev ? Reactotron.createStore : createReduxStore;
-const sagaMonitor = isDev ? Reactotron.createSagaMonitor() : {};
+const createStore = isDev() ? Reactotron.createStore : createReduxStore;
+const sagaMonitor = isDev() ? Reactotron.createSagaMonitor() : {};
 
 export default function configureStore(preloadedState?: AppState) {
   const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
@@ -23,9 +23,5 @@ export default function configureStore(preloadedState?: AppState) {
 
   const store = createStore(rootReducer, preloadedState, middleware);
   sagaMiddleware.run(sagas);
-  if (isDev) {
-    // must be called after createStore to avoid race condition
-    Reactotron.connect();
-  }
   return store;
 };
