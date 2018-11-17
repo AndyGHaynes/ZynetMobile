@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Colors } from '../../../../../theme';
+
 export default StyleSheet.create({
   acid: {
     flex: 1,
@@ -14,6 +16,9 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginVertical: 8,
+  },
+  icon: {
+    color: Colors.grayDarker,
   },
   icons: {
     flex: 1,

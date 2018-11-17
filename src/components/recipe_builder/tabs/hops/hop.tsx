@@ -39,7 +39,7 @@ export default ({ hop }: Props) => (
         <Icon
           fontSize={14}
           name='plus-circle'
-          style={{ color: '#333' }}
+          style={styles.icon}
           type='MaterialCommunityIcons'
         />
       </View>

@@ -25,6 +25,9 @@ export default createStackNavigator({
     screen: RootMenu,
   },
 }, {
+  cardStyle: {
+    backgroundColor: Colors.white,
+  },
   initialRouteName: AppRoute.ROOT_MENU,
   navigationOptions: {
     title: 'Zymancer',

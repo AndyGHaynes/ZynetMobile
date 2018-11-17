@@ -48,7 +48,7 @@ export default class Addition extends Component<AdditionProps> {
           <Icon
             fontSize={8}
             name={getAdditionIcon(type)}
-            style={{ color: '#333' }}
+            style={styles.icon}
             type='MaterialCommunityIcons'
           />
         </View>

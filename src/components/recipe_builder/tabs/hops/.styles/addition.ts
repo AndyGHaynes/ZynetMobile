@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { Colors } from '../../../../../theme';
+
 export default StyleSheet.create({
   additionType: {
     flex: 1,
@@ -9,6 +11,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+  },
+  icon: {
+    color: Colors.grayDarker,
   },
   slider: {
     width: '100%',

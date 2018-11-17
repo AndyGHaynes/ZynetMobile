@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+import { Colors } from '../../../theme';
+
 export default StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderBottomWidth: 0.5,
-    borderColor: '#ccc',
+    borderColor: Colors.grayLight,
     borderLeftWidth: 0.5,
     borderRadius: 2,
     borderRightWidth: 0.5,
@@ -15,7 +17,7 @@ export default StyleSheet.create({
     marginRight: 2,
     marginTop: 5,
     padding: 8,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: {
       height: 2,
       width: 0,

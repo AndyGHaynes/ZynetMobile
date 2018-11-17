@@ -1,7 +1,9 @@
 export default {
+  black: '#000',
   blue: '#0CF',
-  gray: '#999',
-  grayDark: '#666',
   grayDarker: '#615457',
-  grayLight: '#ccc',
+  grayDark: '#666',
+  gray: '#999',
+  grayLight: '#CCC',
+  white: '#FFF',
 };
