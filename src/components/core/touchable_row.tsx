@@ -1,20 +1,13 @@
 import React from 'react';
-import {
-  GestureResponderEvent,
-  TouchableOpacity,
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
+import { TouchableProps } from '../../types/components';
 import styles from './.styles/touchable_row';
 
-interface TouchableProps {
-  children: JSX.Element;
-  onPress: (e: GestureResponderEvent) => void;
-}
-
-export default ({ children, onPress }: TouchableProps) => (
+export default ({ children, onPress, style }: TouchableProps) => (
   <TouchableOpacity
     onPress={onPress}
-    style={styles.row}
+    style={[styles.row, style]}
   >
     {children}
   </TouchableOpacity>
