@@ -6,7 +6,7 @@ import { Ingredient } from '../types/ingredients';
 
 let ingredientDB = null;
 const dbName = 'ingredients';
-const url = `http://192.168.1.131/couchdb/${dbName}`;
+const url = `http://192.168.0.131/couchdb/${dbName}`;
 
 export function initializeDB() {
   ingredientDB = new PouchDB(dbName);
