@@ -1,23 +1,23 @@
 import { RecipeCard } from '../../types/recipe';
-import { ActionTypes } from '../actions/recipe_card';
+import { RecipeCardAction } from '../actions/recipe_card';
 
 export default (state: RecipeCard = null, action): RecipeCard => {
   switch (action.type) {
-    case ActionTypes.RECIPE_LOADED:
+    case RecipeCardAction.RECIPE_LOADED:
       return {
         ...state,
         error: false,
         loading: false,
         recipe: action.recipe,
       };
-    case ActionTypes.RECIPE_LOADING:
+    case RecipeCardAction.RECIPE_LOADING:
       return {
         ...state,
         error: false,
         loading: true,
         recipeId: action.recipeId,
       };
-    case ActionTypes.RECIPE_LOADING_ERROR:
+    case RecipeCardAction.RECIPE_LOADING_ERROR:
       return {
         ...state,
         error: true,
