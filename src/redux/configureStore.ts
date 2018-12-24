@@ -5,7 +5,6 @@ import {
 import createSagaMiddleware from 'redux-saga';
 
 import { isDev } from '../utils/environment';
-import loggerMiddleware from './middleware/logger';
 import Reactotron from './reactotron';
 import rootReducer from './reducers';
 import sagas from './sagas';
@@ -17,7 +16,6 @@ const sagaMonitor = isDev() ? Reactotron.createSagaMonitor() : {};
 export default function configureStore(preloadedState?: AppState) {
   const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
   const middleware = applyMiddleware(
-    loggerMiddleware,
     sagaMiddleware,
   );
 
