@@ -1,3 +1,4 @@
+import Button from './button';
 import Card from './card';
 import Col from './col';
 import Icon from './icon';
@@ -7,6 +8,7 @@ import Row from './row';
 import TouchableRow from './touchable_row';
 
 export {
+  Button,
   Card,
   Col,
   Icon,

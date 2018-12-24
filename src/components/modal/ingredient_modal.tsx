@@ -1,7 +1,3 @@
-import {
-  Button,
-  Icon,
-} from 'native-base';
 import React from 'react';
 import {
   ScrollView,
@@ -11,6 +7,7 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 
+import { Button, Icon } from '../core';
 import styles from './.styles/ingredient_modal';
 
 interface ModalProps {
@@ -41,10 +38,7 @@ export default ({ visible, close, title, children }: ModalProps) => (
         {children}
       </ScrollView>
       <View style={styles.closeButton}>
-        <Button
-          block
-          onPress={close}
-        >
+        <Button onPress={close}>
           <Text style={styles.closeButtonText}>
             Close
           </Text>
