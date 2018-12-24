@@ -1,7 +1,4 @@
 import _ from 'lodash';
-import {
-  Icon,
-} from 'native-base';
 import React from 'react';
 import {
   Linking,
@@ -13,7 +10,7 @@ import {
 import {
   Ingredient,
 } from '../../types/ingredients';
-import { Row } from '../core';
+import { Icon, Row } from '../core';
 import styles from './.styles/ingredient_detail';
 import IngredientProperties from './ingredient_properties';
 
@@ -69,7 +66,7 @@ export default ({
             <Text style={styles.url}>
               {linkText || ingredient.mfg}
             </Text>
-            <Icon name='open' style={styles.linkIcon} />
+            <Icon name='open-in-new' style={styles.linkIcon} />
           </View>
         </TouchableOpacity>
         {ingredient.description && (

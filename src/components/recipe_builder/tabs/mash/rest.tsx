@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { Icon } from 'native-base';
 import React from 'react';
 import {
   Text,
@@ -8,6 +7,7 @@ import {
 import { Rest } from '../../../../types/mash';
 import {
   Col,
+  Icon,
   Quantity,
   Row,
 } from '../../../core';
@@ -29,7 +29,6 @@ export default ({ rest, step }: Props) => (
           <Icon
             name='reload'
             style={styles.recirculatedIcon}
-            type='MaterialCommunityIcons'
           />
         )}
       </Row>

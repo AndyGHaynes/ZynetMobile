@@ -1,6 +1,6 @@
 import {
   Icon,
-} from 'native-base';
+} from '../core';
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 
@@ -30,11 +30,12 @@ export default createBottomTabNavigator({
         [BuilderRoutes.FERMENTATION]: 'flask',
         [BuilderRoutes.STYLE]: 'beer',
       }[navigation.state.routeName];
-      return <Icon
-        name={icon}
-        style={{ color: focused ? Colors.blue : Colors.grayLight }}
-        type='MaterialCommunityIcons'
-      />;
+      return (
+        <Icon
+          color={focused ? Colors.blue : Colors.grayLight}
+          name={icon}
+        />
+      );
     },
   }),
   tabBarOptions: {

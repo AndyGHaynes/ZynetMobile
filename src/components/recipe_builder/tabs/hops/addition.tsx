@@ -1,6 +1,3 @@
-import {
-  Icon,
-} from 'native-base';
 import React, { Component } from 'react';
 import {
   Slider,
@@ -10,7 +7,7 @@ import {
 import { HopAddition } from '../../../../types/ingredients';
 import { HopAdditionType } from '../../../../constants/enums';
 import { Measurement } from '../../../../types/zymath';
-import { Quantity } from '../../../core';
+import { Icon, Quantity } from '../../../core';
 import styles from './.styles/addition';
 
 interface AdditionProps {
@@ -46,10 +43,9 @@ export default class Addition extends Component<AdditionProps> {
       <View style={styles.container}>
         <View style={styles.additionType}>
           <Icon
-            fontSize={8}
             name={getAdditionIcon(type)}
+            size={20}
             style={styles.icon}
-            type='MaterialCommunityIcons'
           />
         </View>
         <View style={styles.weight}>

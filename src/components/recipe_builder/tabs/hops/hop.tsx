@@ -1,7 +1,4 @@
 import _ from 'lodash';
-import {
-  Icon,
-} from 'native-base';
 import React from 'react';
 import {
   Text,
@@ -9,7 +6,7 @@ import {
 } from 'react-native';
 
 import { Hop } from '../../../../types/ingredients';
-import { Card } from '../../../core';
+import { Card, Icon } from '../../../core';
 import styles from './.styles/hop';
 import Addition from './addition';
 
@@ -37,10 +34,8 @@ export default ({ hop }: Props) => (
       </View>
       <View style={styles.icons}>
         <Icon
-          fontSize={14}
           name='plus-circle'
           style={styles.icon}
-          type='MaterialCommunityIcons'
         />
       </View>
     </View>
