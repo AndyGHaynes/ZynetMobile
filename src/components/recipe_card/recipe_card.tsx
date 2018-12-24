@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import {
   ScrollView,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -15,20 +14,11 @@ import {
   YeastDetailCard,
 } from '../ingredient_cards';
 import { IngredientModal } from '../modal';
+import styles from './.styles/recipe_card';
 import Fermentable from './fermentable';
 import Hop from './hop';
 import RecipeDetailCard from './recipe_detail_card';
 import Yeast from './yeast';
-
-const styles = StyleSheet.create({
-  content: {
-    padding: 4,
-  },
-  name: {
-    fontSize: 24,
-    textAlign: 'center',
-  },
-});
 
 interface RecipeProps {
   loadRecipe: (id: string) => void;

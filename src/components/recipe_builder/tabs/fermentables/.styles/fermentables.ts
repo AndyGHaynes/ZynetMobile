@@ -15,7 +15,6 @@ export default StyleSheet.create({
   },
   fermentablesContainer: {
     height: scrollHeight,
-    // paddingTop: 8,
     position: 'relative',
   },
   gradientBoundary: {
