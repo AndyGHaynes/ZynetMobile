@@ -7,7 +7,7 @@ import {
   Yeast,
 } from './ingredients';
 import { Mash } from './mash';
-import { Style } from './style';
+import { StyleIdentifier } from './style';
 import { Gravity, Measurement } from './zymath';
 
 export class Recipe {
@@ -15,7 +15,7 @@ export class Recipe {
   targetOG?: Gravity;
   targetVolume: Measurement;
   name: string;
-  style?: Style;
+  style?: StyleIdentifier;
   lastBrewed?: Moment;
   fermentables?: Fermentable[];
   hops?: Hop[];

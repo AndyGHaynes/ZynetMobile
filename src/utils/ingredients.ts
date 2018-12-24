@@ -9,6 +9,7 @@ import {
 } from '../types/ingredients';
 import { Recipe } from '../types/recipe';
 import { Gravity } from '../types/zymath';
+import { BJCPCodes } from '../constants/bjcp';
 import {
   HopAdditionType,
   HopFormType,
@@ -34,6 +35,7 @@ interface Range {
   min: number,
   max: number,
 }
+
 function parseRange(rawRange: string): Range {
   const values = _.map(
     (rawRange || '').split('-'),
@@ -162,9 +164,10 @@ export const randomizeRecipe = (): Promise<Recipe> => {
       const fermentables = randomizeIngredientType<Fermentable>(ingredients, IngredientType.Malt);
       const hops = randomizeIngredientType<Hop>(ingredients, IngredientType.Hop);
       const yeast = randomizeIngredientType<Yeast>(ingredients, IngredientType.Yeast);
+      const style = BJCPCodes[_.random(0, BJCPCodes.length - 1)];
       return {
         name: 'Golden Brett Ale',
-        style: { name: 'Brett Ale', code: '28A' },
+        style,
         lastBrewed: brewDate,
         fermentables: orderIngredients(
           randomizeFermentables(fermentables),

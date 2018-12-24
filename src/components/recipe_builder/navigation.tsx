@@ -10,6 +10,7 @@ import {
   FermentablesContainer,
   HopsContainer,
   MashContainer,
+  StyleContainer,
 } from '../../redux/containers';
 
 const tab = () => null;
@@ -18,7 +19,7 @@ export default createBottomTabNavigator({
   [BuilderRoutes.HOPS]: HopsContainer,
   [BuilderRoutes.MASH]: MashContainer,
   [BuilderRoutes.FERMENTATION]: tab,
-  [BuilderRoutes.STYLE]: tab,
+  [BuilderRoutes.STYLE]: StyleContainer,
 }, {
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused }) => {

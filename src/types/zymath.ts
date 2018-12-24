@@ -26,6 +26,20 @@ export class Gravity {
   }
 }
 
+export class Range {
+  low: number;
+  high?: number;
+  avg?: number;
+  get values() {
+    return _.filter([this.low, this.high]);
+  }
+  toString() {
+    return this.low
+      ? `${this.low}` + (!_.isNil(this.high) && ` - ${this.high}`)
+      : '';
+  }
+}
+
 export class Ratio {
   antecedent: Unit;
   consequent: Unit;
