@@ -28,7 +28,6 @@ export default class FermentablesTab extends Component<FermentableProps, Ferment
   }
 
   selectSegment = (fermentable: Fermentable) => {
-    console.log(`selecting ${fermentable.name}`)
     this.setState({
       selectedFermentable: fermentable,
     });

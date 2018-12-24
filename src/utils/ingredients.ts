@@ -157,7 +157,6 @@ function randomizeYeasts(yeasts: Ingredient[]): Yeast[] {
 export const randomizeRecipe = (): Promise<Recipe> => {
   return getIngredients()
     .then((ingredients) => {
-      console.log('INGREDIENTS', ingredients);
       const orderIngredients = (ingredientSet, primarySort) =>
         _.orderBy(ingredientSet, [primarySort, 'name'], ['desc', 'asc']);
       const brewDate = moment().subtract(_.random(3, 432), 'days');

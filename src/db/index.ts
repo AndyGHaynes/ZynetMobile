@@ -27,7 +27,7 @@ export function getIngredients(): Promise<Ingredient[]> {
       _.map(response.rows, (row) => _.omit(row.doc, ['_id', '_rev']))
     )
     .catch((e) => {
-      console.log('allDocs() error', e);
+      console.tron.log('allDocs() error', e);
       return null;
     });
 }

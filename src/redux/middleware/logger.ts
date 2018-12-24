@@ -1,6 +1,6 @@
 export default (store) => (next) => (action) => {
-  console.info('dispatching', action);
+  console.tron.debug('dispatching', action);
   let result = next(action);
-  console.log('next state', store.getState());
+  console.tron.debug('next state', store.getState());
   return result;
 }
