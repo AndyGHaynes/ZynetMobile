@@ -6,7 +6,7 @@ import {
 } from '../redux/containers';
 import { Colors } from '../theme';
 import RootMenu from './menu';
-import { RecipeBuilderNavigation } from './recipe_builder/index';
+import { RecipeBuilderNavigation } from './recipe_builder';
 
 export default createStackNavigator({
   [AppRoute.RECIPE_BUILDER]: {
