@@ -1,9 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
+import {
+  RegisteredStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 import styles from './.styles/row';
 
-export default ({ children, style = null }) => (
+type Props = {
+  children?: JSX.Element | JSX.Element[],
+  style?: RegisteredStyle<ViewStyle>,
+}
+
+export default ({ children, style }: Props) => (
   <View style={[styles.row, style]}>
     {children}
   </View>
