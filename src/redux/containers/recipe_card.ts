@@ -6,8 +6,7 @@ import { loadRecipe } from '../actions/recipe_card';
 
 const mapStateToProps = (state) => {
   return {
-    recipe: _.get(state.recipeCard, 'recipe', null),
-    recipeCard: state.recipeCard,
+    recipe: _.get(state, 'selectedRecipe.recipe', null),
   };
 };
 

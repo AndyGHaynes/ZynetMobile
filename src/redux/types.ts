@@ -4,6 +4,6 @@ import {
 } from '../types/recipe';
 
 export class AppState {
-  recipe: Recipe;
-  recipeCard: RecipeCard;
+  activeRecipe: Recipe;
+  selectedRecipe: RecipeCard;
 }

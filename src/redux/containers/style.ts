@@ -5,7 +5,7 @@ import Style from '../../components/recipe_builder/tabs/style/style';
 import { BJCPStyles, lookupStyle } from '../../constants/bjcp';
 
 const mapStateToProps = (state) => {
-  const code = _.get(state.recipeCard, 'recipe.style.code');
+  const code = _.get(state.activeRecipe, 'style.code');
   return {
     style: code ? lookupStyle(code) : BJCPStyles[_.random(0, BJCPStyles.length - 1)],
   };

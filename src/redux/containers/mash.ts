@@ -5,7 +5,7 @@ import { Mash } from '../../components/recipe_builder/tabs';
 
 const mapStateToProps = (state) => {
   return {
-    schedule: _.get(state.recipeCard, 'recipe.mash.schedule', {}),
+    schedule: _.get(state.activeRecipe, 'mash.schedule', {}),
   };
 };
 

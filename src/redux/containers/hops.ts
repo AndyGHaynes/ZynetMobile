@@ -5,7 +5,7 @@ import { Hops } from '../../components/recipe_builder/tabs';
 
 const mapStateToProps = (state) => {
   return {
-    hops: _.get(state.recipeCard, 'recipe.hops', null),
+    hops: _.get(state.activeRecipe, 'hops', null),
   };
 };
 

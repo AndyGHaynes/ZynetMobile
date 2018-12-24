@@ -5,7 +5,7 @@ import { Fermentables } from '../../components/recipe_builder/tabs';
 
 const mapStateToProps = (state) => {
   return {
-    fermentables: _.get(state.recipeCard, 'recipe.fermentables', null),
+    fermentables: _.get(state.activeRecipe, 'fermentables', null),
   };
 };
 

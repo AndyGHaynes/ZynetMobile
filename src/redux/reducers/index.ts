@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
+import activeRecipe from './active_recipe';
 import db from './db';
-import recipeCard from './recipe_card';
+import selectedRecipe from './selected_recipe';
 
 export default combineReducers({
+  activeRecipe,
   db,
-  recipeCard,
+  selectedRecipe,
 });
