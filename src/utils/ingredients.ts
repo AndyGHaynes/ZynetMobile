@@ -201,11 +201,11 @@ export const randomizeRecipe = (): Promise<Recipe> => {
             }],
             method: MashMethod.BIAB,
             rests: [{
-              recirculated: true,
+              recirculated: false,
               temperature: { value: 104, unit: Units.Fahrenheit },
               time: { value: 30, unit: Units.Minute },
             }, {
-              recirculated: true,
+              recirculated: false,
               temperature: { value: 140, unit: Units.Fahrenheit },
               time: { value: 30, unit: Units.Minute },
             }, {
