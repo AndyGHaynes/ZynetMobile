@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { Range } from '../types/zymath';
 
 export const extractRange = (raw: string): Range => {
@@ -26,3 +28,6 @@ export const extractRange = (raw: string): Range => {
   }
   return range;
 };
+
+export const inEnum = (enumType: any, value: string) =>
+  _.includes(_.values(enumType), value);

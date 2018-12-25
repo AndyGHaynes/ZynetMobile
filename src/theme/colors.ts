@@ -5,5 +5,6 @@ export default {
   grayDark: '#666',
   gray: '#999',
   grayLight: '#CCC',
+  transparent: 'transparent',
   white: '#FFF',
 };

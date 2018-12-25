@@ -5,9 +5,19 @@ import {
   Text,
   View,
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
 
+import { NavigationProps } from '../../types/navigation';
 import { Recipe } from '../../types/recipe';
-import { Card, TouchableRow } from '../core';
+import { navigateToBuilder } from '../../utils/navigation';
+import {
+  Button,
+  Card,
+  Col,
+  Icon,
+  Row,
+  TouchableRow,
+} from '../core';
 import {
   FermentableDetailCard,
   HopDetailCard,
@@ -20,18 +30,19 @@ import Hop from './hop';
 import RecipeDetailCard from './recipe_detail_card';
 import Yeast from './yeast';
 
-interface RecipeProps {
+type RecipeProps = NavigationProps & {
+  editRecipe: (recipe: Recipe) => void;
   loadRecipe: (id: string) => void;
   recipe: Recipe;
-}
+};
 
-interface RecipeState {
+type RecipeState = {
   modalComponent?: JSX.Element;
   modalOpen: boolean;
   modalTitle: string,
-}
+};
 
-export default class RecipeCard extends Component<RecipeProps, RecipeState> {
+class RecipeCard extends Component<RecipeProps, RecipeState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,6 +72,12 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
     });
   };
 
+  editRecipe = () => {
+    const { editRecipe, navigation, recipe } = this.props;
+    editRecipe(recipe);
+    navigateToBuilder(navigation);
+  };
+
   render() {
     if (!this.props.recipe) {
       return null;
@@ -82,11 +99,25 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
       <View style={styles.content}>
         <ScrollView>
           <Card>
-            <View>
-              <Text style={styles.name}>
-                {name}
-              </Text>
-            </View>
+            <Row>
+              <Col flex={1} />
+              <Col flex={8}>
+                <Text style={styles.name}>
+                  {name}
+                </Text>
+              </Col>
+              <Col flex={1}>
+                <Button
+                  onPress={() => this.editRecipe()}
+                  style={styles.editButton}
+                >
+                  <Icon
+                    name='pencil'
+                    size={20}
+                  />
+                </Button>
+              </Col>
+            </Row>
             <View>
               <Text>
                 {style.name} {style.code}
@@ -161,3 +192,5 @@ export default class RecipeCard extends Component<RecipeProps, RecipeState> {
     );
   }
 }
+
+export default withNavigation(RecipeCard);
