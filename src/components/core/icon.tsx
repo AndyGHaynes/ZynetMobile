@@ -11,7 +11,7 @@ type Props = {
   color?: string;
   name: string;
   size?: number;
-  style?: RegisteredStyle<ViewStyle>;
+  style?: ViewStyle | RegisteredStyle<ViewStyle>;
 }
 
 export default ({ color = null, name, size = 24, style }: Props) => (
