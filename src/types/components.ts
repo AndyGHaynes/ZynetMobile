@@ -11,6 +11,7 @@ export abstract class LoadingScreen {
 
 export class ViewProps {
   children?: JSX.Element | JSX.Element[];
+  flex?: number;
   style?: RegisteredStyle<ViewStyle> | RegisteredStyle<ViewStyle>[];
 }
 
