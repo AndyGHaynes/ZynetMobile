@@ -47,10 +47,15 @@ export default (hop: Hop) => (
       </View>
     </Row>
     <View style={styles.hopSeparator} />
-    {hop.additions.map((addition, i) => (
-      <Row key={i} style={i === hop.additions.length - 1 ? styles.lastAddition : null}>
-        <HopAddition {...addition} />
-      </Row>
-    ))}
+    <Col>
+      {hop.additions.map((addition, i) => (
+        <Row
+          key={`hop-addition-${i}`}
+          style={i === hop.additions.length - 1 ? styles.lastAddition : null}
+        >
+          <HopAddition {...addition} />
+        </Row>
+      ))}
+    </Col>
   </Col>
 );
