@@ -4,18 +4,23 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import { Colors } from '../../theme';
 
 type Props = {
   color?: string;
   name: string;
-  size?: number;
+  size: number;
   style?: ViewStyle | RegisteredStyle<ViewStyle>;
-}
+};
 
-export default ({ color = null, name, size = 24, style }: Props) => (
+export default ({ color, name, size, style }: Props) => (
   <View style={style}>
-    <Icon name={name} color={color} size={size} />
+    <Icon
+      color={color || Colors.grayDarker}
+      name={name}
+      size={size}
+    />
   </View>
 );
