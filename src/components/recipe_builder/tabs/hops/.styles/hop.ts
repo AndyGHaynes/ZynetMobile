@@ -19,6 +19,7 @@ export default StyleSheet.create({
   },
   icon: {
     color: Colors.grayDarker,
+    marginRight: 20,
   },
   icons: {
     flex: 1,

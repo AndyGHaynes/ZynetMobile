@@ -9,11 +9,12 @@ import { Hop as HopType } from '../../../../types/ingredients';
 import styles from './.styles/hops';
 import Hop from './hop';
 
-interface Props {
+type Props = {
   hops: HopType[];
-}
+  removeHop: (hop: HopType) => void;
+};
 
-export default ({ hops }: Props) => (
+export default ({ hops, removeHop }: Props) => (
   <View style={styles.container}>
     <ScrollView style={styles.hops}>
       {_.map(hops, (hop, i) => (
@@ -21,7 +22,10 @@ export default ({ hops }: Props) => (
           key={`${hop.name}-${i}`}
           style={styles.hop}
         >
-          <Hop hop={hop} />
+          <Hop
+            hop={hop}
+            remove={() => removeHop(hop)}
+          />
         </View>
       ))}
     </ScrollView>

@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 
 import { Hops } from '../../components/recipe_builder/tabs';
+import { removeHop } from '../actions/hops';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,5 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, {
+    removeHop,
+  },
 )(Hops);

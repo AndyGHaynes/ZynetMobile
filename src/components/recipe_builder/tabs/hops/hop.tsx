@@ -5,16 +5,21 @@ import {
   View,
 } from 'react-native';
 
+import { Colors, Icons } from '../../../../theme';
 import { Hop } from '../../../../types/ingredients';
-import { Card, Icon } from '../../../core';
+import {
+  Card,
+  IconButton,
+} from '../../../core';
 import styles from './.styles/hop';
 import Addition from './addition';
 
-interface Props {
+type Props = {
   hop: Hop;
-}
+  remove: () => void;
+};
 
-export default ({ hop }: Props) => (
+export default ({ hop, remove }: Props) => (
   <Card>
     <View style={styles.header}>
       <View style={styles.name}>
@@ -33,8 +38,11 @@ export default ({ hop }: Props) => (
         </Text>
       </View>
       <View style={styles.icons}>
-        <Icon
-          name='plus-circle'
+        <IconButton
+          color={Colors.grayDarker}
+          icon='close'
+          onPress={remove}
+          size={Icons.size.medium}
           style={styles.icon}
         />
       </View>
