@@ -4,6 +4,7 @@ import {
   Text,
 } from 'react-native';
 
+import { Icons } from '../../../../theme';
 import { Rest } from '../../../../types/mash';
 import {
   Col,
@@ -28,6 +29,7 @@ export default ({ rest, step }: Props) => (
         {rest.recirculated && (
           <Icon
             name='reload'
+            size={Icons.size.mediumSmall}
             style={styles.recirculatedIcon}
           />
         )}

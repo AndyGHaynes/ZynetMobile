@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
+import { Icons } from '../../theme';
 import { NavigationProps } from '../../types/navigation';
 import { Recipe } from '../../types/recipe';
 import { navigateToBuilder } from '../../utils/navigation';
@@ -113,7 +114,7 @@ class RecipeCard extends Component<RecipeProps, RecipeState> {
                 >
                   <Icon
                     name='pencil'
-                    size={20}
+                    size={Icons.size.medium}
                   />
                 </Button>
               </Col>

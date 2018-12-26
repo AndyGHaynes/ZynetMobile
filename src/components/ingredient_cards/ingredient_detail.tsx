@@ -11,6 +11,7 @@ import {
   Ingredient,
 } from '../../types/ingredients';
 import { Icon, Row } from '../core';
+import { Icons } from '../../theme';
 import styles from './.styles/ingredient_detail';
 import IngredientProperties from './ingredient_properties';
 
@@ -66,7 +67,11 @@ export default ({
             <Text style={styles.url}>
               {linkText || ingredient.mfg}
             </Text>
-            <Icon name='open-in-new' style={styles.linkIcon} />
+            <Icon
+              name='open-in-new'
+              size={Icons.size.medium}
+              style={styles.linkIcon}
+            />
           </View>
         </TouchableOpacity>
         {ingredient.description && (

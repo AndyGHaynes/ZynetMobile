@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 
+import { Icons } from '../../theme';
 import { Button, Icon } from '../core';
 import styles from './.styles/ingredient_modal';
 
@@ -30,6 +31,7 @@ export default ({ visible, close, title, children }: ModalProps) => (
         >
           <Icon
             name='close'
+            size={Icons.size.medium}
             style={styles.closeIcon}
           />
         </TouchableOpacity>

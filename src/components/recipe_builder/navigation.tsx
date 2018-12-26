@@ -5,7 +5,7 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 
 import { BuilderRoutes } from '../../constants/routes';
-import { Colors } from '../../theme';
+import { Colors, Icons } from '../../theme';
 import {
   FermentablesContainer,
   HopsContainer,
@@ -34,6 +34,7 @@ export default createBottomTabNavigator({
         <Icon
           color={focused ? Colors.blue : Colors.grayLight}
           name={icon}
+          size={Icons.size.medium}
         />
       );
     },

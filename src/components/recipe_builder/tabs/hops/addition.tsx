@@ -4,6 +4,7 @@ import {
   View,
 } from 'react-native';
 
+import { Icons } from '../../../../theme';
 import { HopAddition } from '../../../../types/ingredients';
 import { HopAdditionType } from '../../../../constants/enums';
 import { Measurement } from '../../../../types/zymath';
@@ -44,7 +45,7 @@ export default class Addition extends Component<AdditionProps> {
         <View style={styles.additionType}>
           <Icon
             name={getAdditionIcon(type)}
-            size={20}
+            size={Icons.size.mediumSmall}
             style={styles.icon}
           />
         </View>
