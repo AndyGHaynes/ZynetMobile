@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 
-import { Icons } from '../../theme';
+import { Colors, Icons } from '../../theme';
 import { Button, Icon } from '../core';
 import styles from './.styles/ingredient_modal';
 
@@ -30,7 +30,8 @@ export default ({ visible, close, title, children }: ModalProps) => (
           style={styles.closeIconContainer}
         >
           <Icon
-            name='close'
+            color={Colors.white}
+            name={Icons.type.close}
             size={Icons.size.medium}
             style={styles.closeIcon}
           />

@@ -5,3 +5,10 @@ export const size = {
   mediumLarge: 28,
   large: 32,
 };
+
+export const type = {
+  close: 'close',
+  edit: 'pencil',
+  reload: 'reload',
+  openLink: 'open-in-new',
+};

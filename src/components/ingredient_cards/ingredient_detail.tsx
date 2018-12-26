@@ -69,7 +69,7 @@ export default ({
               {linkText || ingredient.mfg}
             </Text>
             <Icon
-              name='open-in-new'
+              name={Icons.type.openLink}
               size={Icons.size.medium}
               style={styles.linkIcon}
             />

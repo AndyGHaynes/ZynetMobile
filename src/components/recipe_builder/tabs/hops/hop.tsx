@@ -40,7 +40,7 @@ export default ({ hop, remove }: Props) => (
       <View style={styles.icons}>
         <IconButton
           color={Colors.grayDarker}
-          icon='close'
+          icon={Icons.type.close}
           onPress={remove}
           size={Icons.size.medium}
           style={styles.icon}

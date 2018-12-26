@@ -113,7 +113,7 @@ class RecipeCard extends Component<RecipeProps, RecipeState> {
                   style={styles.editButton}
                 >
                   <Icon
-                    name='pencil'
+                    name={Icons.type.edit}
                     size={Icons.size.medium}
                   />
                 </Button>

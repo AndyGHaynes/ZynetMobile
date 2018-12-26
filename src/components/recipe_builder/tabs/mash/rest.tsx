@@ -28,7 +28,7 @@ export default ({ rest, step }: Props) => (
         </Text>
         {rest.recirculated && (
           <Icon
-            name='reload'
+            name={Icons.type.reload}
             size={Icons.size.mediumSmall}
             style={styles.recirculatedIcon}
           />
