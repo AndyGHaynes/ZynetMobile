@@ -1,13 +1,18 @@
 import _ from 'lodash';
 
 import { Recipe } from '../../types/recipe';
-import { ActionTypes } from '../actions/recipe_card';
+import { RecipeCardAction } from '../actions/recipe_card';
 
-export default (state: Recipe = null, action): Recipe => {
+type RecipeAction = {
+  recipe?: Recipe;
+  type: RecipeCardAction;
+};
+
+export default (state: Recipe = null, action: RecipeAction): Recipe => {
   switch (action.type) {
-    case ActionTypes.RECIPE_LOADED:
-      return _.assign({}, action.recipe);
+    case RecipeCardAction.EDIT_RECIPE:
+      return _.cloneDeep(action.recipe);
     default:
       return state;
   }
-}
+};
