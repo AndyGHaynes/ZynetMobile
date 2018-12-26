@@ -27,6 +27,7 @@ interface IngredientDetail {
 const defaultExcludedProperties = [
   'characteristics',
   'description',
+  'id',
   'mfg',
   'name',
   'style',

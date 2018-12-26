@@ -24,7 +24,10 @@ export function getIngredients(): Promise<Ingredient[]> {
     include_docs: true,
   })
     .then((response) =>
-      _.map(response.rows, (row) => _.omit(row.doc, ['_id', '_rev']))
+      _.map(
+        response.rows,
+        (row) => _.assign(_.omit(row.doc, ['_id', '_rev']), { id: _.get(row, 'doc._id') || null })
+      )
     )
     .catch((e) => {
       console.tron.log('allDocs() error', e);
