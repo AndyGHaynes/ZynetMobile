@@ -12,7 +12,12 @@ export enum HopAction {
   SET_BETA = 'HOPS/SET_BETA',
 }
 
-export const removeHop = (hop: Hop) => ({
+export type HopActionType = {
+  type: HopAction;
+  hop: Hop;
+};
+
+export const removeHop = (hop: Hop): HopActionType => ({
   type: HopAction.REMOVE,
   hop,
 });

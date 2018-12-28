@@ -1,27 +1,25 @@
 import { call, put } from 'redux-saga/effects';
 
 import { randomizeRecipe } from '../../utils/ingredients';
-import { RecipeCardAction } from '../actions/recipe_card';
+import {
+  loadRecipeError,
+  recipeLoaded,
+  RecipeAction,
+} from '../actions/recipe';
 import { takeLatest } from '../../../node_modules/redux-saga/effects';
 
 type RecipeLookup = {
-  type: RecipeCardAction;
+  type: RecipeAction;
   recipeId: string;
 }
 
 function* loadRecipe({ recipeId }: RecipeLookup) {
   if (recipeId === 'random') {
     const recipe = yield call(randomizeRecipe);
-    yield put({
-      type: RecipeCardAction.RECIPE_LOADED,
-      recipe,
-    });
+    yield put(recipeLoaded(recipe));
   } else {
-    yield put({
-      type: RecipeCardAction.RECIPE_LOADING_ERROR,
-      errorMessage: 'only random',
-    });
+    yield put(loadRecipeError(new Error('only random')));
   }
 }
 
-export const lookupRecipe = takeLatest(RecipeCardAction.RECIPE_LOADING, loadRecipe);
+export const lookupRecipe = takeLatest(RecipeAction.RECIPE_LOADING, loadRecipe);

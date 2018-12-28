@@ -1,26 +1,27 @@
 import _ from 'lodash';
 
-import { Hop } from '../../types/ingredients';
 import { Recipe } from '../../types/recipe';
-import { HopAction } from '../actions/hops';
-import { RecipeCardAction } from '../actions/recipe_card';
+import {
+  HopAction,
+  HopActionType,
+} from '../actions/hops';
+import {
+  RecipeAction,
+  RecipeActionType,
+} from '../actions/recipe';
+import hops from './hops';
 
-type RecipeAction = {
-  hop?: Hop;
-  recipe?: Recipe;
-  type: HopAction | RecipeCardAction;
-};
+type RootRecipeType =
+  RecipeActionType
+  | HopActionType;
 
-export default (state: Recipe = null, action: RecipeAction): Recipe => {
+export default (state: Recipe = null, action: RootRecipeType): Recipe => {
   switch (action.type) {
-    case RecipeCardAction.EDIT_RECIPE:
+    case RecipeAction.EDIT_RECIPE:
       return _.cloneDeep(action.recipe);
     case HopAction.REMOVE:
       return _.assign({}, state, {
-        hops: _.filter(
-          state.hops,
-          (hop) => hop.id !== action.hop.id
-        ),
+        hops: hops(state.hops, action),
       });
     default:
       return state;

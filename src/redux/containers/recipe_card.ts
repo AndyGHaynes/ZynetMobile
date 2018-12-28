@@ -5,7 +5,7 @@ import RecipeCard from '../../components/recipe_card/recipe_card';
 import {
   editRecipe,
   loadRecipe,
-} from '../actions/recipe_card';
+} from '../actions/recipe';
 
 const mapStateToProps = (state) => {
   return {
