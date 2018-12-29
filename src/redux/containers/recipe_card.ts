@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
-import RecipeCard from '../../components/recipe_card/recipe_card';
+import { RecipeCard } from '../../components/recipe_card';
 import {
   editRecipe,
   loadRecipe,

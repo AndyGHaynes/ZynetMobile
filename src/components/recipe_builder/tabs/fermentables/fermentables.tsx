@@ -5,18 +5,18 @@ import {
   View,
 } from 'react-native';
 
-import { Fermentable } from '../../../../types/ingredients';
+import { Fermentable as FermentableType } from '../../../../types/ingredients';
 import { TouchableRow } from '../../../core';
-import FermentableComponent from '../../../recipe_card/fermentable';
+import { Fermentable } from '../../../recipe_card';
 import styles, { CHART_HEIGHT } from './.styles/fermentables';
 import FermentablesChart from './chart';
 
 interface FermentableProps {
-  fermentables: Fermentable[];
+  fermentables: FermentableType[];
 }
 
 interface FermentableState {
-  selectedFermentable: Fermentable;
+  selectedFermentable: FermentableType;
 }
 
 export default class FermentablesTab extends Component<FermentableProps, FermentableState> {
@@ -27,7 +27,7 @@ export default class FermentablesTab extends Component<FermentableProps, Ferment
     };
   }
 
-  selectSegment = (fermentable: Fermentable) => {
+  selectSegment = (fermentable: FermentableType) => {
     this.setState({
       selectedFermentable: fermentable,
     });
@@ -49,9 +49,9 @@ export default class FermentablesTab extends Component<FermentableProps, Ferment
           {_.map(fermentables, (fermentable) => (
             <TouchableRow
               key={fermentable.name}
-              onPress={_.noop}
+              onPress={() => this.selectSegment(fermentable)}
             >
-              <FermentableComponent
+              <Fermentable
                 fermentable={fermentable}
                 fraction={_.round(fermentable.weight.value / totalWeight, 2)}
               />
