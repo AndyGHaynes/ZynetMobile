@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { randomizeRecipe } from '../../utils/ingredients';
 import {
@@ -6,7 +6,6 @@ import {
   recipeLoaded,
   RecipeAction,
 } from '../actions/recipe';
-import { takeLatest } from '../../../node_modules/redux-saga/effects';
 
 type RecipeLookup = {
   type: RecipeAction;
