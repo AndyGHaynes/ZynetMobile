@@ -4,7 +4,7 @@ import { Recipe } from '../../types/recipe';
 import { FermentableAction, FermentableActionType } from '../actions/fermentables';
 import { HopAction, HopActionType } from '../actions/hops';
 import { RecipeAction, RecipeActionType } from '../actions/recipe';
-import fermentable from './fermentable';
+import fermentables from './fermentables';
 import hops from './hops';
 
 type RootRecipeType =
@@ -17,16 +17,15 @@ export default (state: Recipe = null, action: RootRecipeType): Recipe => {
     case RecipeAction.EDIT_RECIPE:
       return _.cloneDeep(action.recipe);
     case FermentableAction.SET_WEIGHT:
-      return _.assign({}, state, {
-        fermentables: _.map(
-          state.fermentables,
-          (f) => f.id === action.fermentable.id ? fermentable(f, action) : f,
-        ),
-      });
+      return {
+        ...state,
+        fermentables: fermentables(state.fermentables, action),
+      };
     case HopAction.REMOVE:
-      return _.assign({}, state, {
+      return {
+        ...state,
         hops: hops(state.hops, action),
-      });
+      };
     default:
       return state;
   }
