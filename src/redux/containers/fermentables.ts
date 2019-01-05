@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 
 import { Fermentables } from '../../components/recipe_builder/tabs';
+import { setWeight } from '../actions/fermentables';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,5 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, {
+    setWeight,
+  },
 )(Fermentables);
